@@ -1,13 +1,16 @@
 export const CREATE_POST = 'CREATE_POST';
 
-export const postCreator = ({id,parentId,title,body,author}) => {
+export const postCreator = ({id,timestamp,title,body,author,category,voteScore,deleted}) => {
     return {
         type: CREATE_POST,
         id,
-        parentId,
+        timestamp,
         title,
         body,
-        author
+        author,
+        category,
+        voteScore,
+        deleted
 
     }
 }

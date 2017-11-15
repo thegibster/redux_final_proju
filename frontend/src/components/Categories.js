@@ -11,6 +11,7 @@ class Categories extends Component {
 
         return (
             <div className="category">
+                {/*<h1>Category:</h1>*/}
                 <ol className="categories-grid">
                     { (categories.length > 0) ?
 
@@ -29,7 +30,9 @@ class Categories extends Component {
                                             {/*</div>*/}
                                         </div>
                                         {/*<div className="category-title">{category.name}</div>*/}
-                                        <div className="category-path"><Link to={`/${category.path}`}>{category.path}</Link></div>
+                                        <div className="category-path">
+                                            <Link to={`/${category.path}`}>{category.path}</Link>
+                                        </div>
                                     </div>
                                 </li>
                             </div>

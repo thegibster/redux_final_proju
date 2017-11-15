@@ -33,7 +33,7 @@ import registerServiceWorker from './registerServiceWorker';
 
 console.log(store);
 console.log(store.getState());
-store.dispatch(postCreator({id:1,parentId:'vat',title:'mars',body:'tasty treat',author:'miles davis'}));
+store.dispatch(postCreator({id:1,timestamp:Date.now(),title:'mars',body:'tasty treat',author:'miles davis',category:'react-redux',voteScore:0,deleted:false}));
 store.dispatch(fetchCategories()());
 console.log(store.getState());
 

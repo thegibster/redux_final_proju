@@ -8,7 +8,7 @@ const initialState = {
 export default function (state=initialState,action) {
 
     // const { } = action;
-    const { id,parentId,title,body,author } = action;
+    const { id,timestamp,title,body,author,category,voteScore,deleted } = action;
     switch(action.type){
 
 
@@ -25,11 +25,17 @@ export default function (state=initialState,action) {
                     //     body}
 
             ...state,
-            posts: [...state.posts,  {id,
-            parentId,
-            title,
-            author,
-            body}]
+            posts: [...state.posts,  {
+                    id,
+                    timestamp,
+                    title,
+                    body,
+                    author,
+                    category,
+                    voteScore,
+                    deleted
+                }
+            ]
 
             };
 
