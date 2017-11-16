@@ -1,4 +1,5 @@
 import  { CREATE_POST }  from '../actions/post_actions';
+import  { GET_POSTS }  from '../actions/post_actions';
 
 
 const initialState = {
@@ -37,6 +38,11 @@ export default function (state=initialState,action) {
                 }
             ]
 
+            };
+        case GET_POSTS:
+            return {
+                ...state,
+                posts: [...action.posts]
             };
 
         default:

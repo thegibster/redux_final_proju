@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Route, Link  } from 'react-router-dom';
 import Categories from './components/Categories';
+import Posts from './components/Posts';
+import Post from './components/Post';
+import Category_Posts from './components/Category_Posts';
 import * as fetchCategories from './utils/index';
 import  allReducers from './reducers/';
 import logo from './logo.svg';
@@ -48,6 +51,20 @@ class App extends Component {
 
               </div>
           )}></Route>
+          <Route exact path="/posts" render={() => (
+              <div className="categories">
+                  <Posts />
+
+              </div>
+          )}></Route>
+          {/*<Route exact path="/posts/:id" render={() => (*/}
+              {/*<div className="post">*/}
+                  {/*<Post />*/}
+
+              {/*</div>*/}
+          {/*)}></Route>*/}
+          {/*<Route exact path="/posts/" component={Post} />*/}
+          <Route exact path="/posts/:id" component={Post} />
       </div>
     );
   }
