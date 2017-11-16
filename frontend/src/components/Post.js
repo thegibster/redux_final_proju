@@ -10,19 +10,21 @@ class Post extends Component {
         console.log("category posts");
         // const { post } = this.props.post;
         const postID = this.props;
-        console.log(`POST component ${postID} `, postID.location.pathname);
+        console.log(this.props, postID.location.pathname);
         console.log(postID);
-        // const singlePost = this.props.posts.filter(post => post.id === postID.match.params.id);
-
+        const singlePost = this.props.posts.posts.filter(post => post.id === postID.match.params.id);
+        console.log(singlePost, 'barking')
 
     // return(<div>hi</div>)
         return (
             <div className="posts">
                 <div>Post</div>
-                <ol className="categories-grid">
-                    { (this.props.posts.posts.length > 0) ?
 
-                        this.props.posts.posts.filter(post => post.id === postID.match.params.id).map((post) => (
+                <ol className="categories-grid">
+                    { (singlePost !== null && Object.keys(singlePost).length !== 0 ) ?
+
+                        singlePost.map((post) => (
+                            post.id ?
                             <div key={post.id}>
                                 <li>
                                     <div className="book">
@@ -48,9 +50,10 @@ class Post extends Component {
                                     </div>
                                 </li>
                             </div>
+                                : <div>No bueno</div>
                         ))
 
-                    : <div>No Posts for this Category.</div>
+                    : <div>{`No Post matching the id: ${postID.match.params.id} was found.`}</div>
                     }
 
                 </ol>
