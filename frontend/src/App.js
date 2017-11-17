@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Route, Link  } from 'react-router-dom';
+import { Route, Link , Switch } from 'react-router-dom';
 import Categories from './components/Categories';
 import Posts from './components/Posts';
 import Post from './components/Post';
+import NoMatch from './components/NoMatch';
+import Home from './components/Home';
+// import { Categories, Posts, Post, Category_Posts, NoMatch} from './components/';
 import Category_Posts from './components/Category_Posts';
 import * as fetchCategories from './utils/index';
 import  allReducers from './reducers/';
@@ -45,26 +48,38 @@ class App extends Component {
               To get started first, edit <code>src/App.js</code> and save to reload.
             </p>
           </div>
-          <Route exact path="/" render={() => (
-              <div className="categories">
-                 <Categories />
+          <Switch>
+              <Route exact path='/' render={() => (
+                  <div>
+                      <Home />
+                  </div>
+              )}>
 
-              </div>
-          )}></Route>
-          <Route exact path="/posts" render={() => (
-              <div className="categories">
-                  <Posts />
+              </Route>
+              {/*<Route exact path="/categories" render={() => (*/}
+                  {/*<div className="categories">*/}
+                      {/*<Categories />*/}
 
-              </div>
-          )}></Route>
-          {/*<Route exact path="/posts/:id" render={() => (*/}
+                  {/*</div>*/}
+              {/*)}></Route>*/}
+              <Route exact path='/categories' component={Categories}/>
+              <Route exact path="/posts" render={() => (
+                  <div className="categories">
+                      <Posts />
+
+                  </div>
+              )}></Route>
+              {/*<Route exact path="/posts/:id" render={() => (*/}
               {/*<div className="post">*/}
-                  {/*<Post />*/}
+              {/*<Post />*/}
 
               {/*</div>*/}
-          {/*)}></Route>*/}
-          {/*<Route exact path="/posts/" component={Post} />*/}
-          <Route exact path="/posts/:id" component={Post} />
+              {/*)}></Route>*/}
+              {/*<Route exact path="/posts/" component={Post} />*/}
+              <Route exact path="/posts/:id" component={Post} />
+              <Route component={NoMatch}/>
+          </Switch>
+
       </div>
     );
   }

@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 
 class Categories extends Component {
     render () {
-            console.log("category comp", this.props.categories.categories);
+         console.log("category comp", this.props.categories.categories);
          const { categories } = this.props.categories;
-         console.log("cstergy hmhmhmhm", categories)
+         console.log("everythting in props", this.props)
 
 
         return (
@@ -31,7 +31,7 @@ class Categories extends Component {
                                         </div>
                                         {/*<div className="category-title">{category.name}</div>*/}
                                         <div className="category-path">
-                                            <Link to={`/${category.path}`}>{category.path}</Link>
+                                            <Link to={`${this.props.location.pathname}${category.path}`}>{category.path}</Link>
                                         </div>
                                     </div>
                                 </li>

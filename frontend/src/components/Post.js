@@ -21,6 +21,12 @@ class Post extends Component {
                 <div>Post</div>
 
                 <ol className="categories-grid">
+                    {/*
+                    If the array returned is loaded with an empty object then that must be checked
+                    using the Object.keys method, as no keys indicates no values actually exist in
+                    the object
+
+                    */}
                     { (singlePost !== null && Object.keys(singlePost).length !== 0 ) ?
 
                         singlePost.map((post) => (
