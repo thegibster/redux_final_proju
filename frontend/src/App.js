@@ -44,31 +44,31 @@ class App extends Component {
               <img src={logo} className="App-logo" alt="logo" />
               <h1 className="App-title">Welcome to React</h1>
             </header>
-            <p className="App-intro">
-              To get started first, edit <code>src/App.js</code> and save to reload.
-            </p>
+            {/*<p className="App-intro">*/}
+              {/*To get started first, edit <code>src/App.js</code> and save to reload.*/}
+            {/*</p>*/}
           </div>
           <Switch>
-              <Route exact path='/' render={() => (
-                  <div>
-                      <Home />
-                  </div>
-              )}>
+              {/*<Route exact path='/' render={() => (*/}
+                  {/*<div>*/}
+                      {/*<Home />*/}
+                  {/*</div>*/}
+              {/*)}>*/}
 
-              </Route>
+              {/*</Route>*/}
               {/*<Route exact path="/categories" render={() => (*/}
                   {/*<div className="categories">*/}
                       {/*<Categories />*/}
 
                   {/*</div>*/}
               {/*)}></Route>*/}
-              <Route exact path='/categories' component={Categories}/>
-              <Route exact path="/posts" render={() => (
-                  <div className="categories">
-                      <Posts />
 
-                  </div>
-              )}></Route>
+              {/*<Route exact path="/posts" render={() => (*/}
+                  {/*<div className="categories">*/}
+                      {/*<Posts />*/}
+
+                  {/*</div>*/}
+              {/*)}></Route>*/}
               {/*<Route exact path="/posts/:id" render={() => (*/}
               {/*<div className="post">*/}
               {/*<Post />*/}
@@ -76,6 +76,9 @@ class App extends Component {
               {/*</div>*/}
               {/*)}></Route>*/}
               {/*<Route exact path="/posts/" component={Post} />*/}
+              <Route exact path='/' component={Home}/>
+              <Route exact path='/categories' component={Categories}/>
+              <Route exact path='/posts' component={Posts}/>
               <Route exact path="/posts/:id" component={Post} />
               <Route component={NoMatch}/>
           </Switch>

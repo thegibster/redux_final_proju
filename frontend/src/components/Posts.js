@@ -6,7 +6,8 @@ class Posts extends Component {
     render () {
             console.log("category posts", this.props.posts);
          const { posts } = this.props.posts;
-         console.log("cstergy hmhmhmhm", posts)
+         console.log("cstergy hmhmhmhm", posts,this.props.location.pathname)
+       const  pathname =  this.props.location.pathname;
 
 
         return (
@@ -29,7 +30,7 @@ class Posts extends Component {
                                                 {/*/>*/}
                                             {/*</div>*/}
                                         </div>
-                                        <div className="category-title">Title: <Link to={`/${post.id}`}>{post.title}</Link></div>
+                                        <div className="category-title">Title: <Link to={`${pathname+post.id}`}>{post.title}</Link></div>
                                         <div>{post.body}</div>
                                         <div>By: {post.author}</div>
                                         <div>Category: {post.category}</div>
