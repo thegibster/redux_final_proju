@@ -4,6 +4,7 @@ import { Route, Link , Switch } from 'react-router-dom';
 import Categories from './components/Categories';
 import Posts from './components/Posts';
 import Post from './components/Post';
+import New_Post from './components/New_Post';
 import NoMatch from './components/NoMatch';
 import Home from './components/Home';
 // import { Categories, Posts, Post, Category_Posts, NoMatch} from './components/';
@@ -55,6 +56,9 @@ class App extends Component {
                   {/*</div>*/}
               {/*)}>*/}
 
+
+
+
               {/*</Route>*/}
               {/*<Route exact path="/categories" render={() => (*/}
                   {/*<div className="categories">*/}
@@ -76,10 +80,13 @@ class App extends Component {
               {/*</div>*/}
               {/*)}></Route>*/}
               {/*<Route exact path="/posts/" component={Post} />*/}
-              <Route exact path='/' component={Home}/>
-              <Route exact path='/categories' component={Categories}/>
-              <Route exact path='/posts' component={Posts}/>
-              <Route exact path="/posts/:id" component={Post} />
+              <Route  path='/' exact component={Home}/>
+              <Route  path='/categories' exact component={Categories}/>
+              <Route  path='/posts' exact component={Posts}/>
+              <Route  path="/posts/new" exact component={New_Post} />
+              <Route  path="/posts/:id"  exact component={Post} />
+
+
               <Route component={NoMatch}/>
           </Switch>
 
