@@ -36,6 +36,7 @@ class Posts extends Component {
                                         <div>Category: {post.category}</div>
                                         <div>Vote Score: {post.voteScore}</div>
                                         <div>Comments: {post.commentCount}</div>
+                                        <Link to={`${pathname+post.id}/edit`}>Edit</Link>
                                         <div className="category-path">
                                             {/*<Link to={`/${category.path}`}>{category.path}</Link>*/}
                                         </div>

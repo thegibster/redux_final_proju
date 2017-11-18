@@ -5,6 +5,7 @@ import Categories from './components/Categories';
 import Posts from './components/Posts';
 import Post from './components/Post';
 import New_Post from './components/New_Post';
+import Edit_Post from './components/Edit_Post';
 import NoMatch from './components/NoMatch';
 import Home from './components/Home';
 // import { Categories, Posts, Post, Category_Posts, NoMatch} from './components/';
@@ -85,6 +86,7 @@ class App extends Component {
               <Route  path='/posts' exact component={Posts}/>
               <Route  path="/posts/new" exact component={New_Post} />
               <Route  path="/posts/:id"  exact component={Post} />
+              <Route  path="/posts/:id/edit"  exact component={Edit_Post} />
 
 
               <Route component={NoMatch}/>
