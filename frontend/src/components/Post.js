@@ -50,6 +50,7 @@ class Post extends Component {
                                         <div>Category: {post.category}</div>
                                         <div>Vote Score: {post.voteScore}</div>
                                         <div>Comments: {post.commentCount}</div>
+                                        <div>Date: {new Date(post.timestamp).toUTCString()}</div>
                                         <div className="category-path">
                                             {/*<Link to={`/${category.path}`}>{category.path}</Link>*/}
                                         </div>

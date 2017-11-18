@@ -14,12 +14,12 @@ class Category_View extends Component {
         return (
             <div className="category">
                 {/*<h1>Category:</h1>*/}
-                <ol className="categories-grid">
+
                     { (categories !== null && Object.keys(categories ).length !== 0 ) ?
 
                         categories.map((category) => (
                             <div key={category.name}>
-                                <li>
+
                                     <div className="book">
                                         <div className="book-top">
                                             {/*<div className="book-cover" style={{ width: 128, height: 188, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>*/}
@@ -37,14 +37,14 @@ class Category_View extends Component {
                                             <Category_Post posts={filteredPosts} category={category.path}/>
                                         </div>
                                     </div>
-                                </li>
+
                             </div>
                         ))
 
                     : <div>Nothing to See here</div>
                     }
 
-                </ol>
+
             </div>
         )
     }
