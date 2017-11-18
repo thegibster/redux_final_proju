@@ -3,18 +3,21 @@ import * as PostsAPIUtil from '../utils/posts_utils';
 export const CREATE_POST = 'CREATE_POST';
 export const GET_POSTS = 'GET_POSTS';
 export const GET_POST = 'GET_POST';
+export const EDIT_POST = 'EDIT_POST';
+export const DELETE_POST = 'DELETE_POST';
 
-export const postCreator = ({id,timestamp,title,body,author,category,voteScore,deleted}) => {
+
+export const postCreator = ({new_post}) => {
     return {
         type: CREATE_POST,
-        id,
-        timestamp,
-        title,
-        body,
-        author,
-        category,
-        voteScore,
-        deleted
+        id:new_post.id,
+        timestamp:new_post.timestamp,
+        title:new_post.title,
+        body:new_post.body,
+        author:new_post.author,
+        category:new_post.category,
+        voteScore:new_post.voteScore,
+        deleted:new_post.deleted
 
     }
 }

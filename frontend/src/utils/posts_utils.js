@@ -1,3 +1,4 @@
+const uuidV1 = require('uuid/v1');
 
 export const fetch_posts = () => {
 
@@ -25,15 +26,28 @@ export const fetch_posts_byID = (post_id) => {
     // .then(({ hits }) => hits.map(({ recipe }) => recipe))
 }
 
-export const post_a_comment = () => {
+export const post_a_post = (new_post) => {
+    const body_To_Pass = {
+        id:uuidV1(),
+        timestamp:Date.now(),
+        title:new_post.title,
+        body:new_post.body,
+        author:new_post.author,
+        category:new_post.category,
+        voteScore:1,
+        deleted:false
+    };
 
-
-    return fetch(`http://localhost:3001/comments`,{
-        method: 'get',
+    return fetch(`http://localhost:3001/posts`,{
+        method: 'post',
         headers: {
             'Authorization': 'cake'
-        }})
+        },
+        body: body_To_Pass
+        })
         .then((res) => res.json())
+
+
     //Can clean up the return data by perhaps fetching the key[categories] in the return
     // .then(({ hits }) => hits.map(({ recipe }) => recipe))
 }

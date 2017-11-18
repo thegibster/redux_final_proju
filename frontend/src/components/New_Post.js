@@ -11,6 +11,12 @@ import Container from 'muicss/lib/react/container';
 
 class New_Post extends Component {
 
+    handleSubmit (e){
+
+        console.log("the values on submit action", e.target);
+        e.preventDefault();
+    }
+
     render () {
 
     const options = this.props.categories.categories;
@@ -20,7 +26,7 @@ class New_Post extends Component {
 
         <Container>
             <h1>Create A New Post</h1>
-            <Form>
+            <Form onSubmit={this.handleSubmit}>
                 <Input hint="Title" />
                 <Input hint="Author" />
                 <Select name="input" label="Choose A Category" required>
@@ -33,7 +39,7 @@ class New_Post extends Component {
                     }
                 </Select>
                 <Textarea hint="Body" />
-                <Button variant="raised">Submit</Button>
+                <Button variant="raised" type="submit" value="Submit">Submit</Button>
             </Form>
         </Container>
         )
