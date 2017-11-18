@@ -1,19 +1,21 @@
 import React, { Component } from 'react';
 import { Route, Link  } from 'react-router-dom';
 import { connect } from 'react-redux';
+import Category_Post from './Category_Post';
 
-class Categories extends Component {
+class Category_View extends Component {
     render () {
          console.log("category comp", this.props.categories.categories);
-         const { categories } = this.props.categories;
-         console.log("everythting in props", this.props)
+         const  categories  = this.props.categories.categories.filter((category) => category.name === this.props.match.params.id );
+         const filteredPosts = this.props.posts.posts.filter((post) => post.category === this.props.match.params.id);
+         console.log("everythting in props", categories)
 
 
         return (
             <div className="category">
                 {/*<h1>Category:</h1>*/}
                 <ol className="categories-grid">
-                    { (categories.length > 0) ?
+                    { (categories !== null && Object.keys(categories ).length !== 0 ) ?
 
                         categories.map((category) => (
                             <div key={category.name}>
@@ -31,7 +33,8 @@ class Categories extends Component {
                                         </div>
                                         {/*<div className="category-title">{category.name}</div>*/}
                                         <div className="category-path">
-                                            <Link to={`/category/${category.path}`}>{category.path}</Link>
+                                            {/*<Link to={`/category/${category.path}`}>{category.path}</Link>*/}
+                                            <Category_Post posts={filteredPosts} category={category.path}/>
                                         </div>
                                     </div>
                                 </li>
@@ -51,6 +54,6 @@ function mapStateToProps(categories) {
     return categories;
 }
 
-export default connect(mapStateToProps)(Categories);
+export default connect(mapStateToProps)(Category_View);
 
 // export default Categories;

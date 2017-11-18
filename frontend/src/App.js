@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Route, Link , Switch } from 'react-router-dom';
 import Categories from './components/Categories';
+import Category_View from './components/Category_View';
 import Posts from './components/Posts';
 import Post from './components/Post';
 import New_Post from './components/New_Post';
@@ -82,7 +83,9 @@ class App extends Component {
               {/*)}></Route>*/}
               {/*<Route exact path="/posts/" component={Post} />*/}
               <Route  path='/' exact component={Home}/>
+              <Route  path='/category/:id' exact component={Category_View}/>
               <Route  path='/categories' exact component={Categories}/>
+
               <Route  path='/posts' exact component={Posts}/>
               <Route  path="/posts/new" exact component={New_Post} />
               <Route  path="/posts/:id"  exact component={Post} />
