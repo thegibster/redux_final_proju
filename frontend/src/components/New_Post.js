@@ -3,13 +3,18 @@ import { Route, Link  } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Form from 'muicss/lib/react/form';
 import Input from 'muicss/lib/react/input';
+import Select from 'muicss/lib/react/select';
+import Option from 'muicss/lib/react/option';
 import Textarea from 'muicss/lib/react/textarea';
 import Button from 'muicss/lib/react/button';
 import Container from 'muicss/lib/react/container';
 
 class New_Post extends Component {
+
     render () {
-console.log("new-post")
+
+    const options = this.props.categories.categories;
+        console.log("new-post", options);
         return (
 
 
@@ -18,7 +23,15 @@ console.log("new-post")
             <Form>
                 <Input hint="Title" />
                 <Input hint="Author" />
-                <Input hint="Category" />
+                <Select name="input" label="Choose A Category" required>
+                    <Option value="" label="None">None</Option>
+                    {
+                        options.map((category) =>(
+                            <Option key={category.name} value={category.name} label={category.name.toUpperCase()} />
+                            )
+                        )
+                    }
+                </Select>
                 <Textarea hint="Body" />
                 <Button variant="raised">Submit</Button>
             </Form>
@@ -26,10 +39,10 @@ console.log("new-post")
         )
     }
 }
-// function mapStateToProps(categories) {
-//     return categories;
-// }
-//
-// export default connect(mapStateToProps)(New_Post);
+function mapStateToProps(categories) {
+    return categories;
+}
 
-export default New_Post;
+export default connect(mapStateToProps)(New_Post);
+
+// export default New_Post;
