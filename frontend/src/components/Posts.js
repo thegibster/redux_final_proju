@@ -31,7 +31,7 @@ class Posts extends Component {
                                             {/*</div>*/}
                                         </div>
                                         <div className="category-title">Title: <Link to={`${pathname+post.id}`}>{post.title}</Link></div>
-                                        <div>{post.body}</div>
+                                        <div>Content: {post.body}</div>
                                         <div>By: {post.author}</div>
                                         <div>Category: {post.category}</div>
                                         <div>Vote Score: {post.voteScore}</div>

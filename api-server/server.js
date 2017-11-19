@@ -7,11 +7,17 @@ const config = require('./config')
 const categories = require('./categories')
 const posts = require('./posts')
 const comments = require('./comments')
+const logger = require('morgan');
+
 
 const app = express()
 
+app.use(logger('dev'))
 app.use(express.static('public'))
 app.use(cors())
+app.use(bodyParser.json())
+// app.use(bodyParser.urlencoded({extended: true}))
+app.use(bodyParser.urlencoded({ extended: false }))
 
 
 app.get('/', (req, res) => {
@@ -165,7 +171,8 @@ app.get('/posts', (req, res) => {
       )
 })
 
-app.post('/posts', bodyParser.json(), (req, res) => {
+app.post('/posts',  (req, res) => {
+    console.log(req.body,'req',req.token,'token power',req.params)
     posts.add(req.token, req.body)
       .then(
           (data) => res.send(data),

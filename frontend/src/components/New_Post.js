@@ -8,6 +8,7 @@ import Option from 'muicss/lib/react/option';
 import Textarea from 'muicss/lib/react/textarea';
 import Button from 'muicss/lib/react/button';
 import Container from 'muicss/lib/react/container';
+import {post_a_post} from '../utils/posts_utils';
 
 class New_Post extends Component {
     state = {
@@ -36,13 +37,14 @@ class New_Post extends Component {
         e.preventDefault();
 
         console.log("the values on submit action", e.target,this.state);
+        post_a_post(this.state);
 
     }
 
     render () {
 
     const options = this.props.categories.categories;
-        console.log("new-post", options);
+        // console.log("new-post", options);
         return (
 
 

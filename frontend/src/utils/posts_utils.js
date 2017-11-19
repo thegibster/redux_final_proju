@@ -27,7 +27,8 @@ export const fetch_posts_byID = (post_id) => {
 }
 
 export const post_a_post = (new_post) => {
-    const body_To_Pass = {
+    console.log(new_post)
+    const parameters = {
         id:uuidV1(),
         timestamp:Date.now(),
         title:new_post.title,
@@ -37,13 +38,17 @@ export const post_a_post = (new_post) => {
         voteScore:1,
         deleted:false
     };
+    // let data = new FormData();
+    // data.append( "json", JSON.stringify( parameters ) );
 
     return fetch(`http://localhost:3001/posts`,{
         method: 'post',
         headers: {
-            'Authorization': 'cake'
+            'Authorization': 'cake',
+            // 'Content-Type': 'application/x-www-form-urlencoded'
+            'Content-Type': 'application/json'
         },
-        body: body_To_Pass
+        body:JSON.stringify(parameters)
         })
         .then((res) => res.json())
 
