@@ -10,11 +10,33 @@ import Button from 'muicss/lib/react/button';
 import Container from 'muicss/lib/react/container';
 
 class New_Post extends Component {
+    state = {
 
-    handleSubmit (e){
+        author:'',
+        body:'',
+        category:'',
+        title:''
 
-        console.log("the values on submit action", e.target);
+    }
+
+    handleAuthorChange = (e) => {
+        this.setState({author: e.target.value});
+    }
+    handleBodyChange = (e) => {
+        this.setState({body: e.target.value});
+    }
+    handleCategoryChange = (e) => {
+        this.setState({category: e.target.value});
+    }
+    handleTitleChange = (e) => {
+        this.setState({title: e.target.value});
+    }
+
+    handleSubmit = (e) => {
         e.preventDefault();
+
+        console.log("the values on submit action", e.target,this.state);
+
     }
 
     render () {
@@ -27,9 +49,9 @@ class New_Post extends Component {
         <Container>
             <h1>Create A New Post</h1>
             <Form onSubmit={this.handleSubmit}>
-                <Input hint="Title" />
-                <Input hint="Author" />
-                <Select name="input" label="Choose A Category" required>
+                <Input hint="Title"  value={this.state.title} onChange={this.handleTitleChange}/>
+                <Input hint="Author"  value={this.state.author} onChange={this.handleAuthorChange}/>
+                <Select name="input" label="Choose A Category" required  value={this.state.category} onChange={this.handleCategoryChange}>
                     <Option value="" label="None">None</Option>
                     {
                         options.map((category) =>(
@@ -38,7 +60,7 @@ class New_Post extends Component {
                         )
                     }
                 </Select>
-                <Textarea hint="Body" />
+                <Textarea hint="Body" value={this.state.body} onChange={this.handleBodyChange} />
                 <Button variant="raised" type="submit" value="Submit">Submit</Button>
             </Form>
         </Container>

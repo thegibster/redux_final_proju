@@ -6,8 +6,8 @@ class All_Posts extends Component {
     render () {
         console.log("category posts", this.props.posts);
         const { posts } = this.props.posts;
-        // console.log("cstergy hmhmhmhm", posts,this.props.location.pathname)
-        // const  pathname =  this.props.location.pathname;
+        console.log("home post all", this.props)
+        const  pathname =  this.props.location.pathname;
 
 
         return (
@@ -37,7 +37,7 @@ class All_Posts extends Component {
                                         <div>Vote Score: {post.voteScore}</div>
                                         <div>Comments: {post.commentCount}</div>
                                         <div>Date: {new Date(post.timestamp).toUTCString()}</div>
-                                        {/*<Link to={`${pathname+post.id}/edit`}>Edit</Link>*/}
+                                        <Link to={`${pathname+post.id}/edit`}>Edit</Link>
                                         <div className="category-path">
                                             {/*<Link to={`/${category.path}`}>{category.path}</Link>*/}
                                         </div>

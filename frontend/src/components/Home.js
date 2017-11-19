@@ -14,7 +14,7 @@ class Home extends Component {
                 <Link to="/categories">Categories</Link>
                 <h3>All Posts</h3>
                 {/*<Posts posts={this.props}/>*/}
-                <All_Posts />
+                <All_Posts location={this.props.location}/>
             </div>
 
         )
