@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Link  } from 'react-router-dom';
 import { connect } from 'react-redux';
+import Comments from './Comments';
 
 //might need to either filter from the state of posts right here
 //or actually execute the api call for a single post
@@ -45,12 +46,13 @@ class Post extends Component {
                                             {/*</div>*/}
                                         </div>
                                         <div className="category-title">Title: <Link to={`/${post.id}`}>{post.title}</Link></div>
+                                        <div>Date: {new Date(post.timestamp).toUTCString()}</div>
                                         <div>{post.body}</div>
                                         <div>By: {post.author}</div>
                                         <div>Category: {post.category}</div>
                                         <div>Vote Score: {post.voteScore}</div>
                                         <div>Comments: {post.commentCount}</div>
-                                        <div>Date: {new Date(post.timestamp).toUTCString()}</div>
+                                        <Comments id={post.id}/>
                                         <div className="category-path">
                                             {/*<Link to={`/${category.path}`}>{category.path}</Link>*/}
                                         </div>

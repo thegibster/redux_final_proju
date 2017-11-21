@@ -8,6 +8,7 @@ import App from './App';
 import { postCreator }  from './actions/post_actions';
 import { fetchCategories }  from './actions/categories_action';
 import { fetchPosts,fetchPostByID }  from './actions/post_actions';
+import { fetchCommentsByParentID }  from './actions/comments_actions';
 import store from './store';
 import { Provider } from 'react-redux';
 // import thunk from 'redux-thunk';
@@ -39,6 +40,7 @@ store.dispatch(fetchCategories()());
 console.log(store.getState());
 store.dispatch(fetchPostByID({id:"8xf0y6ziyjabvozdd253nd"})());
 store.dispatch(fetchPosts()());
+store.dispatch(fetchCommentsByParentID({id:"8xf0y6ziyjabvozdd253nd"})())
 console.log(store.getState());
 
 

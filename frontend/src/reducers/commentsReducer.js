@@ -1,4 +1,4 @@
-import { CREATE_COMMENT } from '../actions/comments_actions';
+import { CREATE_COMMENT,GET_COMMENTS,DELETE_COMMENT } from '../actions/comments_actions';
 
 const initialState = {
     comments:[]
@@ -13,7 +13,7 @@ export default function (state=initialState,action) {
 
     switch(action.type){
 
-        case "DELETE_COMMENT":
+        case DELETE_COMMENT:
             return state.filter(category => category.name !== action.name);
         case CREATE_COMMENT:
             console.log("CREATE_COMMENT was called",action.comments, state);
@@ -27,7 +27,13 @@ export default function (state=initialState,action) {
                comments: [...action.comments]
             }
 
+        case GET_COMMENTS:
+            return {
+                ...state,
+                comments: [...action.comments]
+            };
 
         default:
             return state;
-    }}
+    }
+}
