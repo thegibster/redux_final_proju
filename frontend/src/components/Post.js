@@ -11,6 +11,7 @@ import CircularProgress from 'material-ui/CircularProgress';
 import Form from 'muicss/lib/react/form';
 import Input from 'muicss/lib/react/input';
 import Textarea from 'muicss/lib/react/textarea';
+import {post_a_comment} from '../utils/comments_utils';
 
 //might need to either filter from the state of posts right here
 //or actually execute the api call for a single post
@@ -21,7 +22,8 @@ class Post extends Component {
         author:'',
         body:'',
         open: false,
-        emptyBodyAuthor:true
+        emptyBodyAuthor:true,
+        parentId: this.props.match.params.id,
     };
 
     handleOpen = () => {
@@ -39,6 +41,14 @@ class Post extends Component {
                 this.handleBodyAuthor();
             });
     }
+    handleNewCommentSubmit = (e) => {
+        e.preventDefault();
+        console.log("the values on the new comment", e.target,this.state);
+        post_a_comment(this.state).then(()=>
+            this.handleClose()
+        )
+        
+    }
     handleBodyChange = (e) => {
         this.setState({body: e.target.value},() => {
             this.handleBodyAuthor();
@@ -55,19 +65,19 @@ class Post extends Component {
 
     render () {
 
-        const actions = [
-            <FlatButton
-                label="Cancel"
-                primary={true}
-                onClick={this.handleClose}
-            />,
-            <FlatButton
-                label="Submit"
-                primary={true}
-                disabled={this.state.emptyBodyAuthor}
-                onClick={this.handleClose}
-            />,
-        ];
+        // const actions = [
+        //     <FlatButton
+        //         label="Cancel"
+        //         primary={true}
+        //         onClick={this.handleClose}
+        //     />,
+        //     <FlatButton
+        //         label="Submit"
+        //         primary={true}
+        //         disabled={this.state.emptyBodyAuthor}
+        //         onClick={this.handleClose}
+        //     />,
+        // ];
 
         console.log("category posts");
         // const { post } = this.props.post;
@@ -120,14 +130,14 @@ class Post extends Component {
                                                 <RaisedButton label="Add Comment" onClick={this.handleOpen} />
                                                 <Dialog
                                                     title="New Comment:"
-                                                    actions={actions}
+                                                    // actions={actions}
                                                     modal={true}
                                                     open={this.state.open}
                                                 >
-                                                    <Form>
+                                                    <Form onSubmit={this.handleNewCommentSubmit}>
                                                         <Input hint="Author" value={this.state.author} required={true} onChange={this.handleAuthorChange}/>
                                                         <Textarea hint="Body" value={this.state.body}  required={true} onChange={this.handleBodyChange}/>
-                                                        {/*<Button variant="raised">Submit</Button>*/}
+                                                        <Button variant="raised">Submit</Button>
                                                     </Form>
                                                 </Dialog>
                                             </div>
