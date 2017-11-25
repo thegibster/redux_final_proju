@@ -8,6 +8,9 @@ import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import CircularProgress from 'material-ui/CircularProgress';
+import Form from 'muicss/lib/react/form';
+import Input from 'muicss/lib/react/input';
+import Textarea from 'muicss/lib/react/textarea';
 
 //might need to either filter from the state of posts right here
 //or actually execute the api call for a single post
@@ -15,7 +18,10 @@ import CircularProgress from 'material-ui/CircularProgress';
 class Post extends Component {
 
     state = {
+        author:'',
+        body:'',
         open: false,
+        emptyBodyAuthor:true
     };
 
     handleOpen = () => {
@@ -27,7 +33,42 @@ class Post extends Component {
         this.setState({open: false});
     };
 
+    handleAuthorChange = (e) => {
+        this.setState({author: e.target.value},
+            () => {
+                this.handleBodyAuthor();
+            });
+    }
+    handleBodyChange = (e) => {
+        this.setState({body: e.target.value},() => {
+            this.handleBodyAuthor();
+        });
+    }
+    handleBodyAuthor = () => {
+        if(this.state.author == '' || this.state.body == '') {
+            this.setState({emptyBodyAuthor: true});
+        }
+        if(this.state.author.length > 0 && this.state.body.length > 0) {
+            this.setState({emptyBodyAuthor: false});
+        }
+    }
+
     render () {
+
+        const actions = [
+            <FlatButton
+                label="Cancel"
+                primary={true}
+                onClick={this.handleClose}
+            />,
+            <FlatButton
+                label="Submit"
+                primary={true}
+                disabled={this.state.emptyBodyAuthor}
+                onClick={this.handleClose}
+            />,
+        ];
+
         console.log("category posts");
         // const { post } = this.props.post;
         const postID = this.props;
@@ -40,6 +81,7 @@ class Post extends Component {
         return (
             <div className="posts">
                 <div>Post</div>
+                <MuiThemeProvider>
 
                 <ol className="categories-grid">
                     {/*
@@ -71,7 +113,25 @@ class Post extends Component {
                                         <div>By: {post.author}</div>
                                         <div>Category: {post.category}</div>
                                         <div>Vote Score: {post.voteScore} <Button>+</Button><Button>-</Button></div>
-                                        <div>Comments: {post.commentCount} <Button>Add Comment</Button></div>
+
+
+                                            <div>
+                                                Comments: {post.commentCount}
+                                                <RaisedButton label="Add Comment" onClick={this.handleOpen} />
+                                                <Dialog
+                                                    title="New Comment:"
+                                                    actions={actions}
+                                                    modal={true}
+                                                    open={this.state.open}
+                                                >
+                                                    <Form>
+                                                        <Input hint="Author" value={this.state.author} required={true} onChange={this.handleAuthorChange}/>
+                                                        <Textarea hint="Body" value={this.state.body}  required={true} onChange={this.handleBodyChange}/>
+                                                        {/*<Button variant="raised">Submit</Button>*/}
+                                                    </Form>
+                                                </Dialog>
+                                            </div>
+
                                         <Comments id={post.id}/>
                                         <div className="category-path">
                                             {/*<Link to={`/${category.path}`}>{category.path}</Link>*/}
@@ -83,12 +143,13 @@ class Post extends Component {
                         ))
 
                     // : <div>{`No Post matching the id: ${postID.match.params.id} was found.`}</div>
-                        : <MuiThemeProvider>
+                        :
                             <CircularProgress size={80} thickness={5} />
-                        </MuiThemeProvider>
+
                     }
 
                 </ol>
+                </MuiThemeProvider>
             </div>
         )
     }
