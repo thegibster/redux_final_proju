@@ -3,11 +3,30 @@ import { Route, Link  } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Comments from './Comments';
 import Button from 'muicss/lib/react/button';
+import Dialog from 'material-ui/Dialog';
+import FlatButton from 'material-ui/FlatButton';
+import RaisedButton from 'material-ui/RaisedButton';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import CircularProgress from 'material-ui/CircularProgress';
 
 //might need to either filter from the state of posts right here
 //or actually execute the api call for a single post
 
 class Post extends Component {
+
+    state = {
+        open: false,
+    };
+
+    handleOpen = () => {
+        this.setState({open: true});
+    };
+
+
+    handleClose = () => {
+        this.setState({open: false});
+    };
+
     render () {
         console.log("category posts");
         // const { post } = this.props.post;
@@ -63,7 +82,10 @@ class Post extends Component {
                                 : <div>No bueno</div>
                         ))
 
-                    : <div>{`No Post matching the id: ${postID.match.params.id} was found.`}</div>
+                    // : <div>{`No Post matching the id: ${postID.match.params.id} was found.`}</div>
+                        : <MuiThemeProvider>
+                            <CircularProgress size={80} thickness={5} />
+                        </MuiThemeProvider>
                     }
 
                 </ol>
