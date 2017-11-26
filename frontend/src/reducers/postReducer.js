@@ -9,7 +9,7 @@ const initialState = {
 
 export default function (state=initialState,action) {
 
-    // const { } = action;
+ 
     const { id,timestamp,title,body,author,category,voteScore,deleted } = action;
     switch(action.type){
 
@@ -17,14 +17,6 @@ export default function (state=initialState,action) {
         case CREATE_POST:
             // return state.filter(category => category.name !== action.name);
             return {
-                // ...state,
-
-                    // ...state.posts,
-                    // {id,
-                    //     parentId,
-                    //     title,
-                    //     author,
-                    //     body}
 
             ...state,
             posts: [...state.posts,  {
