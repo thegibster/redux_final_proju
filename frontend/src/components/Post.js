@@ -47,7 +47,7 @@ class Post extends Component {
         post_a_comment(this.state).then(()=>
             this.handleClose()
         )
-        
+
     }
     handleBodyChange = (e) => {
         this.setState({body: e.target.value},() => {

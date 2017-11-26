@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link  } from 'react-router-dom';
 import { connect } from 'react-redux';
+import Button from 'muicss/lib/react/button';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
 
@@ -29,7 +30,7 @@ class Comment extends Component {
 
                                         <CardText expandable={true}>
                                             {comment.body}<br />
-                                           Vote Score: {comment.voteScore}
+                                            Vote Score: {comment.voteScore} <Button>-</Button><Button>+</Button>
                                         </CardText>
                                     </Card>
                                 </MuiThemeProvider>
