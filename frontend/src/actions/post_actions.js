@@ -53,3 +53,21 @@ export const fetchPosts = () => dispatch => {
             .then(posts => {console.log("baby posts",posts);dispatch(postsLoad(posts))});
     }
 }
+
+export const postNewPost = new_post => {
+    console.log(new_post, 'postnew port from aciton file');
+
+        return PostsAPIUtil
+            .post_a_post(new_post)
+            .then(() => fetchPosts())
+
+}
+
+// export const postNewPost = new_post => {
+//     console.log(new_post, 'postnew port from aciton file');
+//
+//     return PostsAPIUtil
+//         .post_a_post(new_post)
+//     // .then(posts => {console.log("post new post action",posts);dispatch(postsLoad(posts))});
+//
+// }

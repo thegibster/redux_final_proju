@@ -14,7 +14,7 @@ export const fetch_posts_comments = (post_id) => {
 }
 
 export const post_a_comment = (new_comment) => {
-
+console.log(new_comment,"this is utils new comment")
     const parameters = {
         id:uuidV1(),
         parentId:new_comment.parentId,
@@ -24,7 +24,7 @@ export const post_a_comment = (new_comment) => {
         voteScore:1,
         deleted:false
     };
-
+console.log(parameters)
     return fetch(`http://localhost:3001/comments`,{
         method: 'post',
         headers: {

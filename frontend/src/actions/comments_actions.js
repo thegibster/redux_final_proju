@@ -6,17 +6,16 @@ export const GET_COMMENT = 'GET_COMMENT';
 export const EDIT_COMMENT = 'EDIT_COMMENT';
 export const DELETE_COMMENT = 'DELETE_COMMENT';
 
-export const commentCreator = ({id,timestamp,title,body,author,parentId,voteScore,parentDeleted}) => {
+export const commentCreator = ({id,body,author,parentId,timestamp}) => {
     return {
         type: CREATE_COMMENT,
         id,
         timestamp,
-        title,
+        parentId,
         body,
         author,
-        parentId,
-        voteScore,
-        parentDeleted
+        voteScore:0,
+        parentDeleted:false
 
     }
 }

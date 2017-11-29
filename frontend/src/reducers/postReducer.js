@@ -9,7 +9,7 @@ const initialState = {
 
 export default function (state=initialState,action) {
 
- 
+
     const { id,timestamp,title,body,author,category,voteScore,deleted } = action;
     switch(action.type){
 

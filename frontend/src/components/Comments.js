@@ -33,7 +33,7 @@ class Comments extends Component {
     render () {
         const comments = this.props.comments.comments.filter((comment)=> comment.parentId === this.props.id);
         comments.sort
-        console.log("nested comments const", comments)
+        console.log("nested comments const", comments,this.props.id,'whyyyy',this.props.comments.comments)
 
         return (
             <div>

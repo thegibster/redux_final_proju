@@ -12,6 +12,9 @@ import Form from 'muicss/lib/react/form';
 import Input from 'muicss/lib/react/input';
 import Textarea from 'muicss/lib/react/textarea';
 import {post_a_comment} from '../utils/comments_utils';
+import {bindActionCreators} from 'redux';
+import * as CommentActions  from '../actions/comments_actions';
+const uuidV1 = require('uuid/v1');
 
 //might need to either filter from the state of posts right here
 //or actually execute the api call for a single post
@@ -21,10 +24,13 @@ class Post extends Component {
     state = {
         author:'',
         body:'',
+        id: '',
+        timestamp:Date.now(),
         open: false,
         emptyBodyAuthor:true,
         parentId: this.props.match.params.id,
     };
+
 
     handleOpen = () => {
         this.setState({open: true});
@@ -44,9 +50,20 @@ class Post extends Component {
     handleNewCommentSubmit = (e) => {
         e.preventDefault();
         console.log("the values on the new comment", e.target,this.state);
-        post_a_comment(this.state).then(()=>
-            this.handleClose()
-        )
+        this.setState({
+            id: uuidV1()
+        }, () => {
+            post_a_comment(this.state).then(()=>
+                this.handleClose()
+            ).then(() => this.props.actions.commentCreator(this.state))
+                .then(() => {
+                    this.setState({
+                        author: '',
+                        body:''
+                    })
+                })
+        })
+
 
     }
     handleBodyChange = (e) => {
@@ -169,7 +186,13 @@ function mapStateToProps(posts) {
     return posts;
 }
 
-export default connect(mapStateToProps)(Post);
+function mapDispatchToProps(dispatch){
+    return {
+        actions: bindActionCreators(CommentActions,dispatch)
+    };
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Post);
 // export default  Post;
 
 // export default Categories;

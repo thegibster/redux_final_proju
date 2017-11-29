@@ -11,16 +11,21 @@ import NoMatch from './components/NoMatch';
 import Home from './components/Home';
 // import { Categories, Posts, Post, Category_Posts, NoMatch} from './components/';
 import Category_Posts from './components/Category_Posts';
-import * as fetchCategories from './utils/index';
+// import * as fetchCategories from './utils/index';
 import  allReducers from './reducers/';
 import logo from './logo.svg';
 import './App.css';
+import { fetchPosts,fetchPostByID }  from './actions/post_actions';
+import { fetchCategories }  from './actions/categories_action';
 
 class App extends Component {
     // state = {
     //     categories:[],
     // }
-
+    componentDidMount() {
+        this.props.dispatch(fetchPosts()());
+        this.props.dispatch(fetchCategories()());
+    }
 
 
     // state = {
@@ -100,11 +105,11 @@ class App extends Component {
   }
 }
 
-// function mapStateToProps(categories) {
-//     return categories;
-// }
-//
-// export default connect(mapStateToProps)(App);
+function mapStateToProps(categories) {
+    return categories;
+}
+
+export default connect(mapStateToProps)(App);
 
 
-export default App;
+// export default App;

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Link  } from 'react-router-dom';
+import { Redirect,Route, Link  } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Form from 'muicss/lib/react/form';
 import Input from 'muicss/lib/react/input';
@@ -9,6 +9,8 @@ import Textarea from 'muicss/lib/react/textarea';
 import Button from 'muicss/lib/react/button';
 import Container from 'muicss/lib/react/container';
 import {post_a_post} from '../utils/posts_utils';
+import { postNewPost } from   '../actions/post_actions';
+
 
 class New_Post extends Component {
     state = {
@@ -37,7 +39,20 @@ class New_Post extends Component {
         e.preventDefault();
 
         console.log("the values on submit action", e.target,this.state);
-        post_a_post(this.state);
+        // post_a_post(this.state);
+        postNewPost(this.state)
+            .then( () => {
+                alert("Success, post posted");
+                this.setState({
+                    title: '',
+                    category: '',
+                    body:'',
+                    author:''
+                });
+                <Redirect to={{
+                    pathname: '/'
+                }}/>
+            });
 
     }
 
@@ -69,8 +84,8 @@ class New_Post extends Component {
         )
     }
 }
-function mapStateToProps(categories) {
-    return categories;
+function mapStateToProps(posts) {
+    return posts;
 }
 
 export default connect(mapStateToProps)(New_Post);

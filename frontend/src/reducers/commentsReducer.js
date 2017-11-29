@@ -6,7 +6,7 @@ const initialState = {
 
 export default function (state=initialState,action) {
 
-    const { comments } = action;
+    const { id,timestamp,parentId,body,author,voteScore,parentDeleted } = action;
     // const  deepcategories = action.categories;
     // console.log("why not", action)
     // const {categories} = action;
@@ -16,7 +16,7 @@ export default function (state=initialState,action) {
         case DELETE_COMMENT:
             return state.filter(category => category.name !== action.name);
         case CREATE_COMMENT:
-            console.log("CREATE_COMMENT was called",action.comments, state);
+            console.log("CREATE_COMMENT was called",action, state);
 
             // return Object.assign({}, state, {
             //     categories: action.categories
@@ -24,7 +24,16 @@ export default function (state=initialState,action) {
             console.log('this is how it look', state.comments)
             return {
                 ...state,
-               comments: [...action.comments]
+                comments: [...state.comments,  {
+                    id,
+                    timestamp,
+                    body,
+                    author,
+                    voteScore,
+                    parentId,
+                    parentDeleted
+                }
+                ]
             }
 
         case GET_COMMENTS:
