@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Route, Link  } from 'react-router-dom';
-import { connect } from 'react-redux';
+import {  Link  } from 'react-router-dom';
+// import { connect } from 'react-redux';
 
 class Category_Post extends Component {
     render () {

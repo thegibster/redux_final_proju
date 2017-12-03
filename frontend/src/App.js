@@ -105,10 +105,13 @@ class App extends Component {
   }
 }
 
-function mapStateToProps(categories) {
-    return categories;
-}
+// function mapStateToProps(categories) {
+//     return categories;
+// }
 
+function mapStateToProps(state) {
+    return state;
+}
 export default connect(mapStateToProps)(App);
 
 

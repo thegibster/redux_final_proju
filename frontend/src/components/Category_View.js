@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Link  } from 'react-router-dom';
+// import { Route, Link  } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Category_Post from './Category_Post';
 

@@ -16,7 +16,7 @@ export const fetch_posts_comments = (post_id) => {
 export const post_a_comment = (new_comment) => {
 console.log(new_comment,"this is utils new comment")
     const parameters = {
-        id:uuidV1(),
+        id:new_comment.id,
         parentId:new_comment.parentId,
         timestamp:Date.now(),
         body:new_comment.body,

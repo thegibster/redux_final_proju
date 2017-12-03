@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Route, Link  } from 'react-router-dom';
+import { Link  } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Comments from './Comments';
 import Button from 'muicss/lib/react/button';
 import Dialog from 'material-ui/Dialog';
-import FlatButton from 'material-ui/FlatButton';
+// import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import CircularProgress from 'material-ui/CircularProgress';
@@ -20,6 +20,8 @@ const uuidV1 = require('uuid/v1');
 //or actually execute the api call for a single post
 
 class Post extends Component {
+
+
 
     state = {
         author:'',
@@ -59,7 +61,8 @@ class Post extends Component {
                 .then(() => {
                     this.setState({
                         author: '',
-                        body:''
+                        body:'',
+                        id:''
                     })
                 })
         })
@@ -72,7 +75,7 @@ class Post extends Component {
         });
     }
     handleBodyAuthor = () => {
-        if(this.state.author == '' || this.state.body == '') {
+        if(this.state.author === '' || this.state.body === '') {
             this.setState({emptyBodyAuthor: true});
         }
         if(this.state.author.length > 0 && this.state.body.length > 0) {
@@ -96,12 +99,13 @@ class Post extends Component {
         //     />,
         // ];
 
-        console.log("category posts");
+        console.log("category posts jive turkey",this.props);
         // const { post } = this.props.post;
         const postID = this.props;
         console.log(this.props, postID.location.pathname);
         console.log(postID);
         const singlePost = this.props.posts.posts.filter(post => post.id === postID.match.params.id);
+        this.props.dispatch(CommentActions.fetchCommentsByParentID(this.props.match.params.id));
         console.log(singlePost, 'barking')
 
     // return(<div>hi</div>)
@@ -186,13 +190,13 @@ function mapStateToProps(posts) {
     return posts;
 }
 
-function mapDispatchToProps(dispatch){
-    return {
-        actions: bindActionCreators(CommentActions,dispatch)
-    };
-}
+// function mapDispatchToProps(dispatch){
+//     return {
+//         actions: bindActionCreators(CommentActions,dispatch)
+//     };
+// }
 
-export default connect(mapStateToProps,mapDispatchToProps)(Post);
+export default connect(mapStateToProps)(Post);
 // export default  Post;
 
 // export default Categories;

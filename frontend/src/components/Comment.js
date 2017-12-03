@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Link  } from 'react-router-dom';
-import { connect } from 'react-redux';
+// import { Link  } from 'react-router-dom';
+// import { connect } from 'react-redux';
 import Button from 'muicss/lib/react/button';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';

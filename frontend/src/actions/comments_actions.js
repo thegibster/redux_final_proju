@@ -32,6 +32,8 @@ export const fetchCommentsByParentID = ({id}) => dispatch => {
     return function action(dispatch) {
         return CommentsAPIUtil
             .fetch_posts_comments(id)
-            .then(comments => {console.log("comments for post", comments);dispatch(commentsLoad(comments))});
+            // .then(comments => {console.log("comments for post", comments);dispatch(commentsLoad(comments))});
+            .then(comments => dispatch(commentsLoad(comments)));
+
     }
 }
