@@ -2,20 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6c5323b8-53ed-4dbc-a53d-3a06e81640fa" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/src/App.js" afterPath="$PROJECT_DIR$/frontend/src/App.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/src/actions/comments_actions.js" afterPath="$PROJECT_DIR$/frontend/src/actions/comments_actions.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/src/components/All_Posts.js" afterPath="$PROJECT_DIR$/frontend/src/components/All_Posts.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/src/components/Category_Post.js" afterPath="$PROJECT_DIR$/frontend/src/components/Category_Post.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/src/components/Category_Posts.js" afterPath="$PROJECT_DIR$/frontend/src/components/Category_Posts.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/src/components/Category_View.js" afterPath="$PROJECT_DIR$/frontend/src/components/Category_View.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/src/components/Comment.js" afterPath="$PROJECT_DIR$/frontend/src/components/Comment.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/src/components/Comments.js" afterPath="$PROJECT_DIR$/frontend/src/components/Comments.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/src/components/Edit_Post.js" afterPath="$PROJECT_DIR$/frontend/src/components/Edit_Post.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/src/components/New_Post.js" afterPath="$PROJECT_DIR$/frontend/src/components/New_Post.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/src/components/NoMatch.js" afterPath="$PROJECT_DIR$/frontend/src/components/NoMatch.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/src/components/Post.js" afterPath="$PROJECT_DIR$/frontend/src/components/Post.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/src/utils/comments_utils.js" afterPath="$PROJECT_DIR$/frontend/src/utils/comments_utils.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -58,11 +45,11 @@
                 </provider>
               </entry>
             </file>
-            <file leaf-file-name="Comments.js" pinned="false" current-in-tab="false">
+            <file leaf-file-name="Comments.js" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/frontend/src/components/Comments.js">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="210">
-                    <caret line="14" column="98" lean-forward="false" selection-start-line="14" selection-start-column="98" selection-end-line="14" selection-end-column="98" />
+                  <state relative-caret-position="225">
+                    <caret line="15" column="84" lean-forward="false" selection-start-line="15" selection-start-column="84" selection-end-line="15" selection-end-column="84" />
                     <folding>
                       <element signature="e#87#125#0" expanded="true" />
                       <element signature="e#291#386#0" expanded="true" />
@@ -71,7 +58,7 @@
                 </provider>
               </entry>
             </file>
-            <file leaf-file-name="comments_actions.js" pinned="false" current-in-tab="true">
+            <file leaf-file-name="comments_actions.js" pinned="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/frontend/src/actions/comments_actions.js">
                 <provider selected="true" editor-type-id="text-editor">
                   <state relative-caret-position="585">
@@ -257,8 +244,8 @@
         <option value="$PROJECT_DIR$/frontend/src/utils/comments_utils.js" />
         <option value="$PROJECT_DIR$/frontend/src/App.js" />
         <option value="$PROJECT_DIR$/frontend/src/components/Post.js" />
-        <option value="$PROJECT_DIR$/frontend/src/components/Comments.js" />
         <option value="$PROJECT_DIR$/frontend/src/actions/comments_actions.js" />
+        <option value="$PROJECT_DIR$/frontend/src/components/Comments.js" />
       </list>
     </option>
   </component>
@@ -586,7 +573,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="97609000" />
+    <option name="totallyTimeSpent" value="97768000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="4" y="23" width="1084" height="1027" extended-state="0" />
@@ -1071,22 +1058,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/components/Comments.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="98" lean-forward="false" selection-start-line="14" selection-start-column="98" selection-end-line="14" selection-end-column="98" />
-          <folding>
-            <element signature="e#87#125#0" expanded="true" />
-            <element signature="e#291#386#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/frontend/src/actions/comments_actions.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="585">
           <caret line="39" column="0" lean-forward="true" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/components/Comments.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="84" lean-forward="false" selection-start-line="15" selection-start-column="84" selection-end-line="15" selection-end-column="84" />
+          <folding>
+            <element signature="e#87#125#0" expanded="true" />
+            <element signature="e#291#386#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

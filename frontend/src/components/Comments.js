@@ -11,8 +11,9 @@ import * as CommentActions  from '../actions/comments_actions';
 
 class Comments extends Component {
     componentDidMount(){
+        console.log(this.props,"urika");
         // this.props.dispatch({type:'GET_COMMENTS', comments:[{parentId:'8xf0y6ziyjabvozdd253nd',id:'cookies',body:'no freaking way'}]});
-        this.props.dispatch(CommentActions.fetchCommentsByParentID({id:'8xf0y6ziyjabvozdd253nd'})());
+        this.props.dispatch(CommentActions.fetchCommentsByParentID({id:this.props.id})());
         console.log(this.props,"urika");
 
     }
