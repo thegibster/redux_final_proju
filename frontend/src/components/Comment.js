@@ -4,9 +4,23 @@ import React, { Component } from 'react';
 import Button from 'muicss/lib/react/button';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
+import {post_vote_comments_by_id} from '../utils/comments_utils';
+
 
 
 class Comment extends Component {
+
+    handleDownVote = (e) => {
+        e.preventDefault();
+        const voteType = "downVote";
+        post_vote_comments_by_id(this.props.comment.id,voteType)
+    }
+    handleUpVote = (e) => {
+        e.preventDefault();
+        const voteType = "upVote";
+        post_vote_comments_by_id(this.props.comment.id,voteType)
+    }
+
     render () {
         const comment = this.props.comment;
 
@@ -30,7 +44,9 @@ class Comment extends Component {
 
                                         <CardText expandable={true}>
                                             {comment.body}<br />
-                                            Vote Score: {comment.voteScore} <Button>-</Button><Button>+</Button>
+                                            Vote Score: {comment.voteScore}
+                                            <Button onClick={this.handleUpVote}>+</Button>
+                                            <Button onClick={this.handleDownVote}>-</Button>
                                         </CardText>
                                     </Card>
                                 </MuiThemeProvider>
