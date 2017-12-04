@@ -78,19 +78,13 @@ class Post extends Component {
     }
     handleDownVote = (e) => {
         e.preventDefault();
-        const voteType = "upVote";
+        const voteType = "downVote";
         postVote_by_id(this.state.parentId,voteType)
-
-
-
     }
     handleUpVote = (e) => {
         e.preventDefault();
-        const voteType = "downVote";
+        const voteType = "upVote";
         postVote_by_id(this.state.parentId,voteType)
-
-
-
     }
     handleBodyChange = (e) => {
         this.setState({body: e.target.value},() => {
@@ -166,7 +160,10 @@ class Post extends Component {
                                         <div>{post.body}</div>
                                         <div>By: {post.author}</div>
                                         <div>Category: {post.category}</div>
-                                        <div>Vote Score: {post.voteScore} <Button onClick={this.handleUpVote}>+</Button><Button onClick={this.handleDownVote}>-</Button></div>
+                                        <div>Vote Score: {post.voteScore}
+                                            <Button onClick={this.handleUpVote}>+</Button>
+                                            <Button onClick={this.handleDownVote}>-</Button>
+                                        </div>
 
 
                                             <div>
