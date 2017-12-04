@@ -12,6 +12,7 @@ import Form from 'muicss/lib/react/form';
 import Input from 'muicss/lib/react/input';
 import Textarea from 'muicss/lib/react/textarea';
 import {post_a_comment} from '../utils/comments_utils';
+import {postVote_by_id} from '../utils/posts_utils'
 import {bindActionCreators} from 'redux';
 import * as CommentActions  from '../actions/comments_actions';
 const uuidV1 = require('uuid/v1');
@@ -21,7 +22,13 @@ const uuidV1 = require('uuid/v1');
 
 class Post extends Component {
 
+    componentDidMount(){
 
+        // this.props.dispatch({type:'GET_COMMENTS', comments:[{parentId:'8xf0y6ziyjabvozdd253nd',id:'cookies',body:'no freaking way'}]});
+        this.props.dispatch(CommentActions.fetchCommentsByParentID({id:this.props.match.params.id})());
+        console.log(this.props,"urika from Post");
+
+    }
 
     state = {
         author:'',
@@ -57,7 +64,7 @@ class Post extends Component {
         }, () => {
             post_a_comment(this.state).then(()=>
                 this.handleClose()
-            ).then(() => this.props.actions.commentCreator(this.state))
+            ).then(() => CommentActions.commentCreator(this.state))
                 .then(() => {
                     this.setState({
                         author: '',
@@ -66,6 +73,22 @@ class Post extends Component {
                     })
                 })
         })
+
+
+    }
+    handleDownVote = (e) => {
+        e.preventDefault();
+        const voteType = "upVote";
+        postVote_by_id(this.state.parentId,voteType)
+
+
+
+    }
+    handleUpVote = (e) => {
+        e.preventDefault();
+        const voteType = "downVote";
+        postVote_by_id(this.state.parentId,voteType)
+
 
 
     }
@@ -143,7 +166,7 @@ class Post extends Component {
                                         <div>{post.body}</div>
                                         <div>By: {post.author}</div>
                                         <div>Category: {post.category}</div>
-                                        <div>Vote Score: {post.voteScore} <Button>+</Button><Button>-</Button></div>
+                                        <div>Vote Score: {post.voteScore} <Button onClick={this.handleUpVote}>+</Button><Button onClick={this.handleDownVote}>-</Button></div>
 
 
                                             <div>

@@ -1,6 +1,10 @@
-import  { CREATE_POST }  from '../actions/post_actions';
-import  { GET_POSTS }  from '../actions/post_actions';
-import  { GET_POST }  from '../actions/post_actions';
+import  {
+    GET_POST,
+    GET_POSTS,
+    CREATE_POST,
+    INCREMENT_VOTE_SCORE,
+    DECREMENT_VOTE_SCORE
+}  from '../actions/post_actions';
 
 
 const initialState = {
@@ -42,6 +46,16 @@ export default function (state=initialState,action) {
             return {
                 ...state,
                 posts: [...action.posts]
+            };
+
+        case INCREMENT_VOTE_SCORE:
+            return {
+
+            };
+
+        case DECREMENT_VOTE_SCORE:
+            return {
+
             };
 
         default:

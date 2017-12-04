@@ -5,6 +5,8 @@ export const GET_POSTS = 'GET_POSTS';
 export const GET_POST = 'GET_POST';
 export const EDIT_POST = 'EDIT_POST';
 export const DELETE_POST = 'DELETE_POST';
+export  const INCREMENT_VOTE_SCORE = 'INCREMENT_VOTE_SCORE';
+export  const DECREMENT_VOTE_SCORE = 'DECREMENT_VOTE_SCORE';
 
 
 export const postCreator = ({new_post}) => {
@@ -63,11 +65,20 @@ export const postNewPost = new_post => {
 
 }
 
-// export const postNewPost = new_post => {
-//     console.log(new_post, 'postnew port from aciton file');
+// export const incrementPost = ({id}) => dispatch => {
+//
 //
 //     return PostsAPIUtil
 //         .post_a_post(new_post)
 //     // .then(posts => {console.log("post new post action",posts);dispatch(postsLoad(posts))});
 //
 // }
+// export const decrementPost = ({id}) => dispatch => {
+//
+//
+//     return PostsAPIUtil
+//         .post_a_post(new_post)
+//     // .then(posts => {console.log("post new post action",posts);dispatch(postsLoad(posts))});
+//
+// }
+

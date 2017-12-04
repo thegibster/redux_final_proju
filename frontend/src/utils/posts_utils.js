@@ -70,15 +70,23 @@ export const fetch_comments_by_id = (id) => {
     // .then(({ hits }) => hits.map(({ recipe }) => recipe))
 }
 
-export const post_vote_comments_by_id = (id) => {
+export const postVote_by_id = (id,voteScore) => {
+    //upVote downVote
+    console.log('vote posting,', id, voteScore)
+    const option = voteScore;
 
 
-    return fetch(`http://localhost:3001/comments/${id}`,{
+
+    return fetch(`http://localhost:3001/posts/${id}`, {
         method: 'post',
         headers: {
-            'Authorization': 'cake'
-        }})
-        .then((res) => res.json())
+            'Authorization': 'cake',
+            // 'Content-Type': 'application/x-www-form-urlencoded'
+            'Content-Type': 'application/json'
+        },
+        body:JSON.stringify({option})
+        })
+        // .then((res) => res.json())
     //Can clean up the return data by perhaps fetching the key[categories] in the return
     // .then(({ hits }) => hits.map(({ recipe }) => recipe))
 }
