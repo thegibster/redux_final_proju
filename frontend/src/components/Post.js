@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Comments from './Comments';
 import Button from 'muicss/lib/react/button';
 import Dialog from 'material-ui/Dialog';
-// import FlatButton from 'material-ui/FlatButton';
+import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import CircularProgress from 'material-ui/CircularProgress';
@@ -19,6 +19,10 @@ const uuidV1 = require('uuid/v1');
 
 //might need to either filter from the state of posts right here
 //or actually execute the api call for a single post
+
+const style = {
+    margin: 12,
+};
 
 class Post extends Component {
 
@@ -38,6 +42,20 @@ class Post extends Component {
         open: false,
         emptyBodyAuthor:true,
         parentId: this.props.match.params.id,
+        openConfirm: false,
+    };
+
+    handleOpenConfirm = () => {
+        this.setState({openConfirm: true});
+    };
+
+    handleCloseConfirm = () => {
+        this.setState({openConfirm: false});
+    };
+
+    handleDeleteConfirm = () => {
+        console.log('deleted gont')
+        this.setState({openConfirm: false});
     };
 
 
@@ -76,6 +94,8 @@ class Post extends Component {
 
 
     }
+
+
     handleDownVote = (e) => {
         e.preventDefault();
         const voteType = "downVote";
@@ -102,6 +122,19 @@ class Post extends Component {
 
     render () {
 
+        const actions = [
+            <FlatButton
+                label="Cancel"
+                primary={true}
+                onClick={this.handleCloseConfirm}
+            />,
+            <FlatButton
+                label="Submit"
+                primary={true}
+                keyboardFocused={true}
+                onClick={this.handleDeleteConfirm}
+            />,
+        ];
         // const actions = [
         //     <FlatButton
         //         label="Cancel"
@@ -164,6 +197,19 @@ class Post extends Component {
                                             <Button onClick={this.handleUpVote}>+</Button>
                                             <Button onClick={this.handleDownVote}>-</Button>
                                         </div>
+                                        <div>
+                                            <RaisedButton label="Delete" onClick={this.handleOpenConfirm} />
+                                            <Dialog
+                                                title="Confirm Delete"
+                                                actions={actions}
+                                                modal={false}
+                                                open={this.state.openConfirm}
+                                                onRequestClose={this.handleCloseConfirm}
+                                            >
+                                                 Warning: You are about to delete this Post.
+                                            </Dialog>
+                                        </div>
+                                        <br />
 
 
                                             <div>
@@ -171,7 +217,7 @@ class Post extends Component {
                                                 <RaisedButton label="Add Comment" onClick={this.handleOpen} />
                                                 <Dialog
                                                     title="New Comment:"
-                                                    // actions={actions}
+                                                    actions={actions}
                                                     modal={true}
                                                     open={this.state.open}
                                                 >
@@ -181,6 +227,7 @@ class Post extends Component {
                                                         <Button variant="raised">Submit</Button>
                                                     </Form>
                                                 </Dialog>
+
                                             </div>
 
                                         <Comments id={post.id}/>
