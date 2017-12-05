@@ -7,12 +7,25 @@ import Textarea from 'muicss/lib/react/textarea';
 import Button from 'muicss/lib/react/button';
 import Container from 'muicss/lib/react/container';
 import Loader from 'react-loader';
+import {edit_post_by_id} from '../utils/posts_utils';
 
 class Edit_Post extends Component {
+
+    state = {
+
+        author:'',
+        body:'',
+        category:'',
+        title:''
+
+    }
+
+
     render () {
         console.log("edit-post" ,this.props)
         const postID = this.props;
         const singlePost = this.props.posts.posts.filter(post => post.id === postID.match.params.id);
+
         console.log(singlePost[0])
         // const getEditPost = (item) => item.id === postID.match.params.id;
         // console.log(singlePost.find(getEditPost));

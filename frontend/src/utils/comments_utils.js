@@ -77,7 +77,8 @@ export const edit_comment_by_id = (id) => {
     return fetch(`http://localhost:3001/comments/${id}`,{
         method: 'put',
         headers: {
-            'Authorization': 'cake'
+            'Authorization': 'cake',
+            'Content-Type': 'application/json'
         }})
         .then((res) => res.json())
     //Can clean up the return data by perhaps fetching the key[categories] in the return
