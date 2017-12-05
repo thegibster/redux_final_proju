@@ -104,12 +104,12 @@ export const edit_comment_by_id = (id) => {
     // .then(({ hits }) => hits.map(({ recipe }) => recipe))
 }
 
-export const delete_comment_by_id = (id) => {
+export const delete_all_posts_comments_by_id = (id) => {
     //not a true delete
     //turns the deleted flag on, thus excluding the comment from the filter view
 
-    return fetch(`http://localhost:3001/comments/${id}`,{
-        method: 'put',
+    return fetch(`http://localhost:3001/posts/${id}`,{
+        method: 'delete',
         headers: {
             'Authorization': 'cake'
         }})

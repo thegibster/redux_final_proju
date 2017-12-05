@@ -12,9 +12,10 @@ import Form from 'muicss/lib/react/form';
 import Input from 'muicss/lib/react/input';
 import Textarea from 'muicss/lib/react/textarea';
 import {post_a_comment} from '../utils/comments_utils';
-import {postVote_by_id} from '../utils/posts_utils'
+import {postVote_by_id,delete_all_posts_comments_by_id} from '../utils/posts_utils'
 import {bindActionCreators} from 'redux';
 import * as CommentActions  from '../actions/comments_actions';
+
 const uuidV1 = require('uuid/v1');
 
 //might need to either filter from the state of posts right here
@@ -53,9 +54,11 @@ class Post extends Component {
         this.setState({openConfirm: false});
     };
 
-    handleDeleteConfirm = () => {
-        console.log('deleted gont')
+    handleDeleteConfirm = (e) => {
+        console.log('deleted gont',this.props.match.params.id);
+        delete_all_posts_comments_by_id(this.props.match.params.id);
         this.setState({openConfirm: false});
+
     };
 
 
@@ -174,7 +177,7 @@ class Post extends Component {
                     { (singlePost !== null && Object.keys(singlePost).length !== 0 ) ?
 
                         singlePost.map((post) => (
-                            post.id ?
+                            (post.id && !post.deleted) ?
                             <div key={post.id}>
                                 <li>
                                     <div className="book">
@@ -242,7 +245,9 @@ class Post extends Component {
 
                     // : <div>{`No Post matching the id: ${postID.match.params.id} was found.`}</div>
                         :
-                            <CircularProgress size={80} thickness={5} />
+                        (this.props.match.params.id && singlePost.length === 0 )
+                            ? <div>This Post has been deleted.</div>
+                           : <CircularProgress size={80} thickness={5} />
 
                     }
 

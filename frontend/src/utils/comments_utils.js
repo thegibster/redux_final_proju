@@ -22,7 +22,8 @@ console.log(new_comment,"this is utils new comment")
         body:new_comment.body,
         author:new_comment.author,
         voteScore:1,
-        deleted:false
+        deleted:false,
+        parentDeleted:false
     };
 console.log(parameters)
     return fetch(`http://localhost:3001/comments`,{

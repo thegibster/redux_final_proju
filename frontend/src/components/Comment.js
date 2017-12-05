@@ -44,7 +44,9 @@ class Comment extends Component {
 
                                         <CardText expandable={true}>
                                             {comment.body}<br />
-                                            Vote Score: {comment.voteScore}
+                                            Vote Score: {comment.voteScore}<br />
+                                            ParentDeleted: {!comment.parentDeleted ? 'False':'True'}<br />
+                                            Deleted: {!comment.deleted ? 'False':'True'}<br />
                                             <Button onClick={this.handleUpVote}>+</Button>
                                             <Button onClick={this.handleDownVote}>-</Button>
                                         </CardText>
