@@ -92,23 +92,15 @@ export const postVote_by_id = (id,voteScore) => {
 }
 
 export const edit_post_by_id = (id,edit_post) => {
+    edit_post.timestamp = Date.now();
 
-    const parameters = {
-
-        timestamp:Date.now(),
-        title:edit_post.title,
-        body:edit_post.body,
-        author:edit_post.author,
-        category:edit_post.category,
-
-    };
-    return fetch(`http://localhost:3001/comments/${id}`,{
+    return fetch(`http://localhost:3001/posts/${id}`,{
         method: 'put',
         headers: {
             'Authorization': 'cake',
             'Content-Type': 'application/json'
         },
-        body:JSON.stringify(parameters)
+        body:JSON.stringify(edit_post)
         })
 
         .then((res) => res.json())
