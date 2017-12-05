@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="6c5323b8-53ed-4dbc-a53d-3a06e81640fa" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/src/components/Comment.js" afterPath="$PROJECT_DIR$/frontend/src/components/Comment.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/src/components/Edit_Post.js" afterPath="$PROJECT_DIR$/frontend/src/components/Edit_Post.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/src/components/Post.js" afterPath="$PROJECT_DIR$/frontend/src/components/Post.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/src/utils/comments_utils.js" afterPath="$PROJECT_DIR$/frontend/src/utils/comments_utils.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/src/utils/posts_utils.js" afterPath="$PROJECT_DIR$/frontend/src/utils/posts_utils.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -110,8 +107,8 @@
             <file leaf-file-name="comments_utils.js" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/frontend/src/utils/comments_utils.js">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="274">
-                    <caret line="22" column="31" lean-forward="false" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
+                  <state relative-caret-position="76">
+                    <caret line="48" column="35" lean-forward="true" selection-start-line="48" selection-start-column="35" selection-end-line="48" selection-end-column="35" />
                     <folding />
                   </state>
                 </provider>
@@ -128,7 +125,7 @@
       <file leaf-file-name="server.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api-server/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1743">
+            <state relative-caret-position="-3275">
               <caret line="51" column="52" lean-forward="true" selection-start-line="51" selection-start-column="52" selection-end-line="51" selection-end-column="52" />
               <folding>
                 <marker date="1511123793000" expanded="true" signature="601:2940" ph="..." />
@@ -147,14 +144,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Post.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Post.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/frontend/src/components/Post.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="461">
-              <caret line="247" column="72" lean-forward="false" selection-start-line="247" selection-start-column="72" selection-end-line="247" selection-end-column="72" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="-1955">
+              <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="7" selection-end-column="52" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -191,14 +186,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Comment.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Comment.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/frontend/src/components/Comment.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="26" column="52" lean-forward="true" selection-start-line="26" selection-start-column="52" selection-end-line="26" selection-end-column="52" />
+            <state relative-caret-position="615">
+              <caret line="41" column="56" lean-forward="false" selection-start-line="41" selection-start-column="56" selection-end-line="41" selection-end-column="56" />
               <folding>
                 <element signature="e#129#174#0" expanded="true" />
-                <marker date="1512444725000" expanded="true" signature="1549:2134" ph="..." />
+                <marker date="1512446030000" expanded="true" signature="2502:3087" ph="..." />
               </folding>
             </state>
           </provider>
@@ -273,9 +268,9 @@
         <option value="$PROJECT_DIR$/frontend/src/actions/post_actions.js" />
         <option value="$PROJECT_DIR$/frontend/src/components/Edit_Post.js" />
         <option value="$PROJECT_DIR$/frontend/src/utils/posts_utils.js" />
+        <option value="$PROJECT_DIR$/frontend/src/components/Post.js" />
         <option value="$PROJECT_DIR$/frontend/src/utils/comments_utils.js" />
         <option value="$PROJECT_DIR$/frontend/src/components/Comment.js" />
-        <option value="$PROJECT_DIR$/frontend/src/components/Post.js" />
       </list>
     </option>
   </component>
@@ -603,7 +598,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="105365000" />
+    <option name="totallyTimeSpent" value="106261000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="4" y="23" width="1084" height="1027" extended-state="0" />
@@ -670,9 +665,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="535">
           <caret line="183" column="18" lean-forward="true" selection-start-line="183" selection-start-column="18" selection-end-line="183" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1046,29 +1039,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api-server/comments.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="94" column="9" lean-forward="true" selection-start-line="94" selection-start-column="9" selection-end-line="94" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/api-server/posts.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-777">
           <caret line="5" column="3" lean-forward="true" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="25" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api-server/server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1743">
-          <caret line="51" column="52" lean-forward="true" selection-start-line="51" selection-start-column="52" selection-end-line="51" selection-end-column="52" />
-          <folding>
-            <marker date="1511123793000" expanded="true" signature="601:2940" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1080,31 +1055,47 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/api-server/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3275">
+          <caret line="51" column="52" lean-forward="true" selection-start-line="51" selection-start-column="52" selection-end-line="51" selection-end-column="52" />
+          <folding>
+            <marker date="1511123793000" expanded="true" signature="601:2940" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api-server/comments.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="94" column="9" lean-forward="true" selection-start-line="94" selection-start-column="9" selection-end-line="94" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/frontend/src/utils/comments_utils.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="22" column="31" lean-forward="false" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
+        <state relative-caret-position="76">
+          <caret line="48" column="35" lean-forward="true" selection-start-line="48" selection-start-column="35" selection-end-line="48" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/components/Post.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1955">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="7" selection-end-column="52" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/frontend/src/components/Comment.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="52" lean-forward="true" selection-start-line="26" selection-start-column="52" selection-end-line="26" selection-end-column="52" />
+        <state relative-caret-position="615">
+          <caret line="41" column="56" lean-forward="false" selection-start-line="41" selection-start-column="56" selection-end-line="41" selection-end-column="56" />
           <folding>
             <element signature="e#129#174#0" expanded="true" />
-            <marker date="1512444725000" expanded="true" signature="1549:2134" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/components/Post.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="461">
-          <caret line="247" column="72" lean-forward="false" selection-start-line="247" selection-start-column="72" selection-end-line="247" selection-end-column="72" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
+            <marker date="1512446030000" expanded="true" signature="2502:3087" ph="..." />
           </folding>
         </state>
       </provider>

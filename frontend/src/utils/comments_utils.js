@@ -89,7 +89,7 @@ export const delete_comment_by_id = (id) => {
     //turns the deleted flag on, thus excluding the comment from the filter view
 
     return fetch(`http://localhost:3001/comments/${id}`,{
-        method: 'put',
+        method: 'delete',
         headers: {
             'Authorization': 'cake'
         }})
