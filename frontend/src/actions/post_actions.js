@@ -62,6 +62,8 @@ export const fetchPosts = () => dispatch => {
         return PostsAPIUtil
             .fetch_posts()
             .then(posts => {console.log("baby posts",posts);dispatch(postsLoad(posts))});
+            // .then((posts) => (postsLoad(posts)))
+
     }
 }
 
@@ -70,9 +72,20 @@ export const postNewPost = new_post => {
 
         return PostsAPIUtil
             .post_a_post(new_post)
-            .then(() => fetchPosts())
+            // .then(() => fetchPosts())
+            .then((posts) => (posts))
 
 }
+
+// export const postNewPost = (new_post) => dispatch => {
+//     console.log(new_post, 'postnew port from aciton file');
+//
+//     return PostsAPIUtil
+//         .post_a_post(new_post)
+//         .then(() => fetchPosts())
+//         .then((posts) => dispatch(postsLoad(posts)))
+//
+// }
 
 // export const incrementPost = ({id}) => dispatch => {
 //

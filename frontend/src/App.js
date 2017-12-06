@@ -67,13 +67,16 @@ class App extends Component {
                               <a className="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                   Categories
                               </a>
-                              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                              <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                   <Link className="dropdown-item" to="/categories">All Categories</Link>
                                   {
-                                      this.props.categories.categories.map((item) => <Link className="dropdown-item" to={`/category/${item.name}`}>{item.name}</Link>)
+                                      this.props.categories.categories.map((item) => <Link key={item.name} className="dropdown-item" to={`/category/${item.name}`}>{item.name}</Link>)
                                   }
 
                               </div>
+                          </li>
+                          <li className="nav-item">
+                              <Link className="nav-item" to="/posts/new">+ Add New Post</Link>
                           </li>
 
                       </ul>

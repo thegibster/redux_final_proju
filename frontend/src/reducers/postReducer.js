@@ -44,9 +44,21 @@ export default function (state=initialState,action) {
             };
 
         case GET_POST:
+            console.log(action.posts,'mokey power')
+
             return {
                 ...state,
-                posts: [...action.posts]
+                posts: [...state.posts,  {
+                    id:action.posts.id,
+                    timestamp:action.posts.timestamp,
+                    title:action.posts.title,
+                    body:action.posts.body,
+                    author:action.posts.author,
+                    category:action.posts.ca,
+                    voteScore:action.posts.voteScore,
+                    deleted:action.posts.deleted
+                }
+                ]
             };
         case SORT_POSTS:
             return {

@@ -10,6 +10,7 @@ import Button from 'muicss/lib/react/button';
 import Container from 'muicss/lib/react/container';
 import {post_a_post} from '../utils/posts_utils';
 import { postNewPost } from   '../actions/post_actions';
+import {postLoad} from '../actions/post_actions';
 
 
 class New_Post extends Component {
@@ -37,12 +38,14 @@ class New_Post extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
+        const {dispatch} = this.props;
 
         console.log("the values on submit action", e.target,this.state);
         // post_a_post(this.state);
         postNewPost(this.state)
-            .then( () => {
-                alert("Success, post posted");
+            .then( (valueReturned) => {
+                console.log((valueReturned))
+                dispatch(postLoad(valueReturned))
                 this.setState({
                     title: '',
                     category: '',
@@ -59,7 +62,7 @@ class New_Post extends Component {
     render () {
 
     const options = this.props.categories.categories;
-        // console.log("new-post", options);
+
         return (
 
 
