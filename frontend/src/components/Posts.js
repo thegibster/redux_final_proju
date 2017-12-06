@@ -1,20 +1,16 @@
 import React, { Component } from 'react';
 import {bindActionCreators} from 'redux';
-import { Route, Link  } from 'react-router-dom';
+import {  Link  } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as PostActions  from '../actions/post_actions';
 
 
 class Posts extends Component {
 
-    componentDidMount() {
-        console.log('Component DID MOUNT!')
-        alert('cookeis')
-    }
     render () {
-         console.log("category posts", this.props.posts);
+
          const { posts } = this.props.posts;
-         console.log("cstergy hmhmhmhm", posts,this.props.location.pathname)
+
          const  pathname =  this.props.location.pathname;
 
 

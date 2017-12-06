@@ -49,56 +49,47 @@ class App extends Component {
     return (
       <div className="App">
           <div>
-            <header className="App-header">
-              <img src={logo} className="App-logo" alt="logo" />
-              <h1 className="App-title">Welcome to React</h1>
-            </header>
-            {/*<p className="App-intro">*/}
-              {/*To get started first, edit <code>src/App.js</code> and save to reload.*/}
-            {/*</p>*/}
+              <nav className="navbar navbar-toggleable-md navbar-light bg-faded">
+
+                  <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                      <ul className="navbar-nav mr-auto">
+                          <li className="nav-item active">
+                              {/*<a className="nav-link" href="#">Home <span class="sr-only">(current)</span></a>*/}
+                              <Link className="nav-item" to="/">Home</Link>
+                          </li>
+                          {/*<li className="nav-item">*/}
+                              {/*<Link className="nav-item" to="/categories">Categories</Link>*/}
+                          {/*</li>*/}
+                          <li className="nav-item">
+                              <Link className="nav-item" to="/posts">Posts</Link>
+                          </li>
+                          <li className="nav-item dropdown">
+                              <a className="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  Categories
+                              </a>
+                              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                  <Link className="dropdown-item" to="/categories">All Categories</Link>
+                                  {
+                                      this.props.categories.categories.map((item) => <Link className="dropdown-item" to={`/category/${item.name}`}>{item.name}</Link>)
+                                  }
+
+                              </div>
+                          </li>
+
+                      </ul>
+
+                  </div>
+              </nav>
           </div>
           <Switch>
-              {/*<Route exact path='/' render={() => (*/}
-                  {/*<div>*/}
-                      {/*<Home />*/}
-                  {/*</div>*/}
-              {/*)}>*/}
-
-
-
-
-              {/*</Route>*/}
-              {/*<Route exact path="/categories" render={() => (*/}
-                  {/*<div className="categories">*/}
-                      {/*<Categories />*/}
-
-                  {/*</div>*/}
-              {/*)}></Route>*/}
-
-              {/*<Route exact path="/posts" render={() => (*/}
-                  {/*<div className="categories">*/}
-                      {/*<Posts />*/}
-
-                  {/*</div>*/}
-              {/*)}></Route>*/}
-              {/*<Route exact path="/posts/:id" render={() => (*/}
-              {/*<div className="post">*/}
-              {/*<Post />*/}
-
-              {/*</div>*/}
-              {/*)}></Route>*/}
-              {/*<Route exact path="/posts/" component={Post} />*/}
               <Route  path='/' exact component={Home}/>
               <Route  path='/category/:id' exact component={Category_View}/>
               <Route  path='/categories' exact component={Categories}/>
-
               <Route  path='/posts' exact component={Posts}/>
               <Route  path="/posts/new" exact component={New_Post} />
               <Route  path="/posts/:id"  exact component={Post} />
               <Route  path="/posts/:id/edit"  exact component={Edit_Post} />
               <Route  path="/comments/:id/edit"  exact component={Edit_Comment} />
-
-
               <Route component={NoMatch}/>
           </Switch>
 

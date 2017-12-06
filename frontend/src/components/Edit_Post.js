@@ -60,7 +60,7 @@ class Edit_Post extends Component {
         const postID = this.props;
         const singlePost = this.props.posts.posts.filter(post => post.id === postID.match.params.id);
 
-        console.log(singlePost[0])
+        console.log(singlePost[0],singlePost)
         // const getEditPost = (item) => item.id === postID.match.params.id;
         // console.log(singlePost.find(getEditPost));
         return (
