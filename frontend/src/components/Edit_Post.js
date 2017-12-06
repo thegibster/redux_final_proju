@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import { Route, Link  } from 'react-router-dom';
+import { Route, Link, Redirect  } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Form from 'muicss/lib/react/form';
 import Input from 'muicss/lib/react/input';
@@ -34,6 +34,9 @@ class Edit_Post extends Component {
     handleTitleChange = (e) => {
         this.setState({title: e.target.value});
     }
+    editDone() {
+        this.props.history.push('/');
+    }
     handleSubmit = (e) => {
         e.preventDefault();
         const finalObEdit = {};
@@ -45,7 +48,7 @@ class Edit_Post extends Component {
         });
         console.log(this.props.match.params.id)
         edit_post_by_id(this.props.match.params.id,finalObEdit)
-
+        this.editDone()
         console.log('submit edit',finalObEdit);
     }
 
