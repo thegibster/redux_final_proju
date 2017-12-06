@@ -45,16 +45,14 @@ class New_Post extends Component {
         postNewPost(this.state)
             .then( (valueReturned) => {
                 console.log((valueReturned))
-                dispatch(postLoad(valueReturned))
+                dispatch(postLoad(valueReturned));
                 this.setState({
                     title: '',
                     category: '',
                     body:'',
                     author:''
                 });
-                <Redirect to={{
-                    pathname: '/'
-                }}/>
+                this.props.history.push('/posts');
             });
 
     }
