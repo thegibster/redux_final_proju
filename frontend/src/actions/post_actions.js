@@ -7,6 +7,7 @@ export const EDIT_POST = 'EDIT_POST';
 export const DELETE_POST = 'DELETE_POST';
 export  const INCREMENT_VOTE_SCORE = 'INCREMENT_VOTE_SCORE';
 export  const DECREMENT_VOTE_SCORE = 'DECREMENT_VOTE_SCORE';
+export const SORT_POSTS = 'SORT_POSTS';
 
 
 export const postCreator = ({new_post}) => {
@@ -36,6 +37,14 @@ export const postLoad = posts => {
     console.log('post loads action fired',posts)
     return {
         type: GET_POST,
+        posts
+    }
+}
+
+export const sortPosts = posts => {
+    console.log('sort post loads action fired',posts)
+    return {
+        type: SORT_POSTS,
         posts
     }
 }

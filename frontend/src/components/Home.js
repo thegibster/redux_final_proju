@@ -4,14 +4,20 @@ import All_Posts from './All_Posts'
 import { connect } from 'react-redux';
 
 
+
 class Home extends Component {
+
+
     render () {
         console.log("nested posts const", this.props)
 
+
         return (
-            <div>
+            <div >
                 <div>Happy Browsing</div>
                 <Link to="/categories">Categories</Link>
+
+
                 <h3>All Posts</h3>
                 {/*<Posts posts={this.props}/>*/}
                 <All_Posts location={this.props.location}/>

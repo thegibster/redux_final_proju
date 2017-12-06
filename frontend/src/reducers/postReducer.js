@@ -2,6 +2,7 @@ import  {
     GET_POST,
     GET_POSTS,
     CREATE_POST,
+    SORT_POSTS,
     INCREMENT_VOTE_SCORE,
     DECREMENT_VOTE_SCORE
 }  from '../actions/post_actions';
@@ -47,7 +48,11 @@ export default function (state=initialState,action) {
                 ...state,
                 posts: [...action.posts]
             };
-
+        case SORT_POSTS:
+            return {
+                ...state,
+                posts: [...action.posts]
+            };
         case INCREMENT_VOTE_SCORE:
             return {
 
