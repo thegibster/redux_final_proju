@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Route, Link , Switch } from 'react-router-dom';
+import { Route, Link , Switch , withRouter} from 'react-router-dom';
 import Categories from './components/Categories';
 import Category_View from './components/Category_View';
 import Posts from './components/Posts';
@@ -114,7 +114,7 @@ class App extends Component {
 function mapStateToProps(state) {
     return state;
 }
-export default connect(mapStateToProps)(App);
+export default withRouter(connect(mapStateToProps)(App));
 
 
 // export default App;
