@@ -40,7 +40,7 @@ console.log(parameters)
     // .then(({ hits }) => hits.map(({ recipe }) => recipe))
 }
 
-export const fetch_comments_by_id = (id) => {
+export const fetch_comment_by_id = (id) => {
 
 
     return fetch(`http://localhost:3001/comments/${id}`,{
@@ -71,15 +71,17 @@ export const post_vote_comments_by_id = (id,voteScore) => {
     // .then(({ hits }) => hits.map(({ recipe }) => recipe))
 }
 
-export const edit_comment_by_id = (id) => {
-
+export const edit_comment_by_id = (id,edit_comment) => {
+    edit_comment.timestamp = Date.now();
 
     return fetch(`http://localhost:3001/comments/${id}`,{
         method: 'put',
         headers: {
             'Authorization': 'cake',
             'Content-Type': 'application/json'
-        }})
+        },
+        body:JSON.stringify(edit_comment)
+        })
         .then((res) => res.json())
     //Can clean up the return data by perhaps fetching the key[categories] in the return
     // .then(({ hits }) => hits.map(({ recipe }) => recipe))

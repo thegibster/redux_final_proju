@@ -21,10 +21,18 @@ export const commentCreator = ({id,body,author,parentId,timestamp}) => {
 }
 
 export const commentsLoad = comments => {
-    console.log('commentss loads action fired',comments)
+    console.log('comments loads action fired',comments)
     return {
         type: GET_COMMENTS,
         comments
+    }
+}
+
+export const commentLoad = comment => {
+    console.log('comment loads action fired',comment)
+    return {
+        type: GET_COMMENT,
+        comments: [comment]
     }
 }
 
@@ -35,5 +43,13 @@ export const fetchCommentsByParentID = ({id}) => dispatch => {
             // .then(comments => {console.log("comments for post", comments);dispatch(commentsLoad(comments))});
             .then(comments => dispatch(commentsLoad(comments)));
 
+    }
+}
+
+export const fetchCommentByID = ({id}) => dispatch => {
+    return function action(dispatch) {
+        return CommentsAPIUtil
+            .fetch_comment_by_id(id)
+            .then(comment => {console.log("single comment fetch",comment);dispatch(commentLoad(comment))});
     }
 }

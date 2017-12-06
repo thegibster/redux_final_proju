@@ -1,4 +1,4 @@
-import { CREATE_COMMENT,GET_COMMENTS,DELETE_COMMENT } from '../actions/comments_actions';
+import { CREATE_COMMENT,GET_COMMENTS,GET_COMMENT,DELETE_COMMENT } from '../actions/comments_actions';
 
 const initialState = {
     comments:[]
@@ -41,7 +41,11 @@ export default function (state=initialState,action) {
                 ...state,
                 comments: [...action.comments]
             };
-
+        case GET_COMMENT:
+            return {
+                ...state,
+                comments: [...action.comments]
+            };
         default:
             return state;
     }
