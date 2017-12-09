@@ -41,6 +41,14 @@ export const postLoad = posts => {
     }
 }
 
+export const editedPostLoad = posts => {
+    console.log('post loads action fired',posts)
+    return {
+        type: EDIT_POST,
+        posts
+    }
+}
+
 export const sortPosts = posts => {
     console.log('sort post loads action fired',posts)
     return {

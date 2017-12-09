@@ -3,6 +3,7 @@ import  {
     GET_POSTS,
     CREATE_POST,
     SORT_POSTS,
+    EDIT_POST,
     INCREMENT_VOTE_SCORE,
     DECREMENT_VOTE_SCORE
 }  from '../actions/post_actions';
@@ -42,7 +43,15 @@ export default function (state=initialState,action) {
                 ...state,
                 posts: [...action.posts]
             };
-
+        case EDIT_POST:
+            console.log('EDIT POST LOG message',state.posts.filter((post) => post.id !== action.posts.id));
+            return {
+                ...state,
+                posts: [
+                    ...state.posts.filter((post) => post.id !== action.posts.id),
+                    {...action.posts}
+                ]
+            };
         case GET_POST:
             console.log(action.posts,'mokey power')
 

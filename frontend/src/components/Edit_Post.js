@@ -10,6 +10,7 @@ import Select from 'muicss/lib/react/select';
 import Container from 'muicss/lib/react/container';
 import Loader from 'react-loader';
 import {edit_post_by_id} from '../utils/posts_utils';
+import {editedPostLoad} from '../actions/post_actions';
 
 class Edit_Post extends Component {
 
@@ -35,10 +36,11 @@ class Edit_Post extends Component {
         this.setState({title: e.target.value});
     }
     editDone() {
-        this.props.history.push('/');
+        this.props.history.push('/posts');
     }
     handleSubmit = (e) => {
         e.preventDefault();
+        const {dispatch} = this.props;
         const finalObEdit = {};
         const sendChanges = Object.keys(this.state).forEach((key) => {
             if(this.state[key].length > 0){
@@ -48,7 +50,18 @@ class Edit_Post extends Component {
         });
         console.log(this.props.match.params.id)
         edit_post_by_id(this.props.match.params.id,finalObEdit)
-        this.editDone()
+            .then( (valueReturned) => {
+                console.log((valueReturned))
+                dispatch(editedPostLoad(valueReturned));
+                this.setState({
+                    title: '',
+                    category: '',
+                    body:'',
+                    author:''
+                });
+                this.editDone();
+            });
+
         console.log('submit edit',finalObEdit);
     }
 
