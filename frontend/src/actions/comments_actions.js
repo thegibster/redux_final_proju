@@ -19,6 +19,14 @@ export const commentCreator = ({id,body,author,parentId,timestamp}) => {
 
     }
 }
+export const editedCommenttLoad = comments => {
+    console.log('comment loads action fired',comments)
+    return {
+        type: EDIT_COMMENT,
+        comments
+    }
+}
+
 
 export const commentsLoad = comments => {
     console.log('comments loads action fired',comments)

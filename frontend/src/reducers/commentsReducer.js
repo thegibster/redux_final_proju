@@ -1,4 +1,8 @@
-import { CREATE_COMMENT,GET_COMMENTS,GET_COMMENT,DELETE_COMMENT } from '../actions/comments_actions';
+import { CREATE_COMMENT,
+    GET_COMMENTS,
+    GET_COMMENT,
+    EDIT_COMMENT
+    ,DELETE_COMMENT } from '../actions/comments_actions';
 
 const initialState = {
     comments:[]
@@ -22,8 +26,12 @@ export default function (state=initialState,action) {
             //     categories: action.categories
             // })
             console.log('this is how it look', state.comments)
+
+
+
             return {
                 ...state,
+                // posts : [...state.posts.map(newerState)],
                 comments: [...state.comments,  {
                     id,
                     timestamp,
@@ -45,6 +53,15 @@ export default function (state=initialState,action) {
             return {
                 ...state,
                 comments: [...action.comments]
+            };
+        case EDIT_COMMENT:
+            console.log('EDIT COMMENT LOG message',state.comments.filter((comment) => comment.id !== action.comments.id));
+            return {
+                ...state,
+                comments: [
+                    ...state.comments.filter((comment) => comment.id !== action.comments.id),
+                    {...action.comments}
+                ]
             };
         default:
             return state;

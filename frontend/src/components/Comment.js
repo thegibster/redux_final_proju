@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import { Link  } from 'react-router-dom';
+import { Link  } from 'react-router-dom';
 // import { connect } from 'react-redux';
 import Button from 'muicss/lib/react/button';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -18,6 +18,10 @@ class Comment extends Component {
         openConfirm: false,
     };
 
+    // editComment = (e) => {
+    //     e.preventDefault();
+    //     this.props.history.push(`/comments/${this.props.comment.id}/edit`);
+    // }
     handleDownVote = (e) => {
         e.preventDefault();
         const voteType = "downVote";
@@ -87,7 +91,9 @@ class Comment extends Component {
                                             ParentDeleted: {!comment.parentDeleted ? 'False':'True'}<br />
                                             Deleted: {!comment.deleted ? 'False':'True'}<br />
                                             <Button onClick={this.handleUpVote}>+</Button>
-                                            <Button onClick={this.handleDownVote}>-</Button>
+                                            <Button onClick={this.handleDownVote}>-</Button><br />
+                                            <Button><Link to={`/comments/${this.props.comment.id}/edit`}>Edit Comment</Link></Button>
+
                                         </CardText>
                                     </Card>
                                     <br />

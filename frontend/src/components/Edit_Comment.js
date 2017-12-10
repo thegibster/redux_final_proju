@@ -14,7 +14,8 @@ import Textarea from 'muicss/lib/react/textarea';
 import Loader from 'react-loader';
 import Container from 'muicss/lib/react/container';
 import {edit_comment_by_id} from '../utils/comments_utils';
-import {fetchCommentByID} from '../actions/comments_actions';
+import {fetchCommentByID,editedCommenttLoad} from '../actions/comments_actions';
+// import {editedPostComment} from '../actions/post_actions';
 
 
 
@@ -36,8 +37,13 @@ class Edit_Comment extends Component {
     handleBodyChange = (e) => {
         this.setState({body: e.target.value});
     }
+    getThisComment = () => this.props.comments.comments.filter(comment => comment.id === this.props.match.params.id);
+    editDone() {
+        this.props.history.push('/posts');
+    }
     handleSubmit = (e) => {
         e.preventDefault();
+        const {dispatch} = this.props;
         const finalObEdit = {};
         const sendChanges = Object.keys(this.state).forEach((key) => {
             if(this.state[key].length > 0){
@@ -47,6 +53,16 @@ class Edit_Comment extends Component {
         });
         console.log(this.props.match.params.id)
         edit_comment_by_id(this.props.match.params.id,finalObEdit)
+            .then( (valueReturned) => {
+                console.log((valueReturned))
+                dispatch(editedCommenttLoad(valueReturned));
+                // dispatch(editedPostComment(valueReturned));
+                this.setState({
+                    body:'',
+                    author:''
+                });
+                this.editDone();
+            });
 
         console.log('submit edit',finalObEdit);
     }
@@ -54,9 +70,9 @@ class Edit_Comment extends Component {
 
 
     render () {
-        const postID = this.props;
-        const singleComment = this.props.comments.comments.filter(comment => comment.id === postID.match.params.id);
-
+        // const postID = this.props;
+        // const singleComment = this.props.comments.comments.filter(comment => comment.id === postID.match.params.id);
+        const singleComment = this.getThisComment();
         console.log("single comment const",singleComment,this.props)
 
         return (

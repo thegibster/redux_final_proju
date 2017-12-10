@@ -15,6 +15,8 @@ import {post_a_comment} from '../utils/comments_utils';
 import {postVote_by_id,delete_all_posts_comments_by_id} from '../utils/posts_utils'
 import {bindActionCreators} from 'redux';
 import * as CommentActions  from '../actions/comments_actions';
+import {increasePostCommentCount} from '../actions/post_actions';
+
 
 const uuidV1 = require('uuid/v1');
 
@@ -79,23 +81,23 @@ class Post extends Component {
     }
     handleNewCommentSubmit = (e) => {
         e.preventDefault();
+        const {dispatch} = this.props;
         console.log("the values on the new comment", e.target,this.state);
         this.setState({
             id: uuidV1()
         }, () => {
-            post_a_comment(this.state).then(()=>
-                this.handleClose()
-            ).then(() => CommentActions.commentCreator(this.state))
-                .then(() => {
-                    this.setState({
-                        author: '',
-                        body:'',
-                        id:''
-                    })
+            post_a_comment(this.state).then((valueReturned)=> {
+                this.handleClose();
+                dispatch(CommentActions.commentCreator(valueReturned));
+                // Need to dispatch an action that increases this posts commentCount
+                dispatch(increasePostCommentCount(valueReturned));
+                this.setState({
+                    author: '',
+                    body:'',
+                    id:''
                 })
+            })
         })
-
-
     }
 
 
@@ -161,97 +163,97 @@ class Post extends Component {
         this.props.dispatch(CommentActions.fetchCommentsByParentID(this.props.match.params.id));
         console.log(singlePost, 'barking')
 
-    // return(<div>hi</div>)
+        // return(<div>hi</div>)
         return (
             <div className="posts">
                 <div>Post</div>
                 <MuiThemeProvider>
 
-                <ol className="categories-grid">
-                    {/*
-                    If the array returned is loaded with an empty object then that must be checked
-                    using the Object.keys method, as no keys indicates no values actually exist in
-                    the object
+                    <ol className="categories-grid">
+                        {/*
+                         If the array returned is loaded with an empty object then that must be checked
+                         using the Object.keys method, as no keys indicates no values actually exist in
+                         the object
 
-                    */}
-                    { (singlePost !== null && Object.keys(singlePost).length !== 0 ) ?
+                         */}
+                        { (singlePost !== null && Object.keys(singlePost).length !== 0 ) ?
 
-                        singlePost.map((post) => (
-                            (post.id && !post.deleted) ?
-                            <div key={post.id}>
-                                <li>
-                                    <div className="book">
-                                        <div className="book-top">
-                                            {/*<div className="book-cover" style={{ width: 128, height: 188, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>*/}
-                                            {/*<div className="book-shelf-changer">*/}
-                                                {/*<Select*/}
+                            singlePost.map((post) => (
+                                (post.id && !post.deleted) ?
+                                    <div key={post.id}>
+                                        <li>
+                                            <div className="book">
+                                                <div className="book-top">
+                                                    {/*<div className="book-cover" style={{ width: 128, height: 188, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>*/}
+                                                    {/*<div className="book-shelf-changer">*/}
+                                                    {/*<Select*/}
                                                     {/*name={book.id}*/}
                                                     {/*onChange={handleInputChange}*/}
                                                     {/*value={`${book.shelf}`}*/}
-                                                {/*/>*/}
-                                            {/*</div>*/}
-                                        </div>
-                                        <div className="category-title">Title: <Link to={`/${post.id}`}>{post.title}</Link></div>
-                                        <div>Date: {new Date(post.timestamp).toUTCString()}</div>
-                                        <div>{post.body}</div>
-                                        <div>By: {post.author}</div>
-                                        <div>Category: {post.category}</div>
-                                        <div>Vote Score: {post.voteScore}
-                                            <Button onClick={this.handleUpVote}>+</Button>
-                                            <Button onClick={this.handleDownVote}>-</Button>
-                                        </div>
-                                        <div>
-                                            <RaisedButton label="Delete" onClick={this.handleOpenConfirm} />
-                                            <Dialog
-                                                title="Confirm Delete"
-                                                actions={actions}
-                                                modal={false}
-                                                open={this.state.openConfirm}
-                                                onRequestClose={this.handleCloseConfirm}
-                                            >
-                                                 Warning: You are about to delete this Post.
-                                            </Dialog>
-                                        </div>
-                                        <br />
+                                                    {/*/>*/}
+                                                    {/*</div>*/}
+                                                </div>
+                                                <div className="category-title">Title: <Link to={`/${post.id}`}>{post.title}</Link></div>
+                                                <div>Date: {new Date(post.timestamp).toUTCString()}</div>
+                                                <div>{post.body}</div>
+                                                <div>By: {post.author}</div>
+                                                <div>Category: {post.category}</div>
+                                                <div>Vote Score: {post.voteScore}
+                                                    <Button onClick={this.handleUpVote}>+</Button>
+                                                    <Button onClick={this.handleDownVote}>-</Button>
+                                                </div>
+                                                <div>
+                                                    <RaisedButton label="Delete" onClick={this.handleOpenConfirm} />
+                                                    <Dialog
+                                                        title="Confirm Delete"
+                                                        actions={actions}
+                                                        modal={false}
+                                                        open={this.state.openConfirm}
+                                                        onRequestClose={this.handleCloseConfirm}
+                                                    >
+                                                        Warning: You are about to delete this Post.
+                                                    </Dialog>
+                                                </div>
+                                                <br />
 
 
-                                            <div>
-                                                Comments: {post.commentCount}
-                                                <RaisedButton label="Add Comment" onClick={this.handleOpen} />
-                                                <Dialog
-                                                    title="New Comment:"
-                                                    actions={actions}
-                                                    modal={true}
-                                                    open={this.state.open}
-                                                >
-                                                    <Form onSubmit={this.handleNewCommentSubmit}>
-                                                        <Input hint="Author" value={this.state.author} required={true} onChange={this.handleAuthorChange}/>
-                                                        <Textarea hint="Body" value={this.state.body}  required={true} onChange={this.handleBodyChange}/>
-                                                        <Button variant="raised">Submit</Button>
-                                                    </Form>
-                                                </Dialog>
+                                                <div>
+                                                    Comments: {post.commentCount}
+                                                    <RaisedButton label="Add Comment" onClick={this.handleOpen} />
+                                                    <Dialog
+                                                        title="New Comment:"
+                                                        actions={actions}
+                                                        modal={true}
+                                                        open={this.state.open}
+                                                    >
+                                                        <Form onSubmit={this.handleNewCommentSubmit}>
+                                                            <Input hint="Author" value={this.state.author} required={true} onChange={this.handleAuthorChange}/>
+                                                            <Textarea hint="Body" value={this.state.body}  required={true} onChange={this.handleBodyChange}/>
+                                                            <Button variant="raised">Submit</Button>
+                                                        </Form>
+                                                    </Dialog>
 
+                                                </div>
+
+                                                <Comments id={post.id}/>
+                                                <div className="category-path">
+                                                    {/*<Link to={`/${category.path}`}>{category.path}</Link>*/}
+                                                </div>
                                             </div>
-
-                                        <Comments id={post.id}/>
-                                        <div className="category-path">
-                                            {/*<Link to={`/${category.path}`}>{category.path}</Link>*/}
-                                        </div>
+                                        </li>
                                     </div>
-                                </li>
-                            </div>
-                                : <div>No bueno</div>
-                        ))
+                                    : <div>No bueno</div>
+                            ))
 
-                    // : <div>{`No Post matching the id: ${postID.match.params.id} was found.`}</div>
-                        :
-                        (this.props.match.params.id && singlePost.length === 0 )
-                            ? <div>This Post has been deleted.</div>
-                           : <CircularProgress size={80} thickness={5} />
+                            // : <div>{`No Post matching the id: ${postID.match.params.id} was found.`}</div>
+                            :
+                            (this.props.match.params.id && singlePost.length === 0 )
+                                ? <div>This Post has been deleted.</div>
+                                : <CircularProgress size={80} thickness={5} />
 
-                    }
+                        }
 
-                </ol>
+                    </ol>
                 </MuiThemeProvider>
             </div>
         )

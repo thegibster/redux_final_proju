@@ -8,6 +8,8 @@ export const DELETE_POST = 'DELETE_POST';
 export  const INCREMENT_VOTE_SCORE = 'INCREMENT_VOTE_SCORE';
 export  const DECREMENT_VOTE_SCORE = 'DECREMENT_VOTE_SCORE';
 export const SORT_POSTS = 'SORT_POSTS';
+export const EDIT_POST_COMMENT = 'EDIT_POST_COMMENT';
+export const INCREASE_POSTS_COMMENT_COUNT = 'INCREASE_POSTS_COMMENT_COUNT';
 
 
 export const postCreator = ({new_post}) => {
@@ -48,6 +50,21 @@ export const editedPostLoad = posts => {
         posts
     }
 }
+
+export const increasePostCommentCount = posts => {
+    return {
+        type: INCREASE_POSTS_COMMENT_COUNT,
+        posts
+    }
+}
+
+// export const editedPostComment = posts => {
+//     console.log('post edit comment loads action fired',posts)
+//     return {
+//         type: EDIT_POST_COMMENT,
+//         posts
+//     }
+// }
 
 export const sortPosts = posts => {
     console.log('sort post loads action fired',posts)
