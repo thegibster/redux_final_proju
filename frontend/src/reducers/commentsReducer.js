@@ -2,7 +2,9 @@ import { CREATE_COMMENT,
     GET_COMMENTS,
     GET_COMMENT,
     EDIT_COMMENT
-    ,DELETE_COMMENT } from '../actions/comments_actions';
+    ,DELETE_COMMENT,
+    INCREMENT_COMMENT_VOTE_SCORE,
+    DECREMENT_COMMENT_VOTE_SCORE} from '../actions/comments_actions';
 
 const initialState = {
     comments:[]
@@ -63,6 +65,39 @@ export default function (state=initialState,action) {
                     {...action.comments}
                 ]
             };
+
+        case INCREMENT_COMMENT_VOTE_SCORE :
+            const newerVUState = (comment) => {
+                let newVals = {};
+                if(comment.id === action.comments.id) {
+                    newVals = Object.assign({},comment,comment.voteScore+=1);
+                    console.log('did downvote increase', newVals)
+                    return newVals;
+                }else{
+                    return comment;
+                }
+            }
+            return{
+                ...state,
+                comments : [...state.comments.map(newerVUState)],
+            };
+        case DECREMENT_COMMENT_VOTE_SCORE:
+            const newerVDState = (comment) => {
+                let newVals = {};
+                if(comment.id === action.comments.id) {
+                    newVals = Object.assign({},comment,comment.voteScore-=1);
+                    console.log('did downvote increase', newVals)
+                    return newVals;
+                }else{
+                    return comment;
+                }
+            }
+            return{
+                ...state,
+                comments : [...state.comments.map(newerVDState)],
+            };
+
+
         default:
             return state;
     }

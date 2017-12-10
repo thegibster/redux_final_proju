@@ -5,6 +5,8 @@ export const GET_COMMENTS = 'GET_COMMENTS';
 export const GET_COMMENT = 'GET_COMMENT';
 export const EDIT_COMMENT = 'EDIT_COMMENT';
 export const DELETE_COMMENT = 'DELETE_COMMENT';
+export  const INCREMENT_COMMENT_VOTE_SCORE = 'INCREMENT_COMMENT_VOTE_SCORE';
+export  const DECREMENT_COMMENT_VOTE_SCORE = 'DECREMENT_COMMENT_VOTE_SCORE';
 
 export const commentCreator = ({id,body,author,parentId,timestamp}) => {
     return {
@@ -17,6 +19,20 @@ export const commentCreator = ({id,body,author,parentId,timestamp}) => {
         voteScore:0,
         parentDeleted:false
 
+    }
+}
+export const commentVoteUp = comments => {
+    console.log('comment up vote action fired',comments)
+    return {
+        type: INCREMENT_COMMENT_VOTE_SCORE,
+        comments
+    }
+}
+export const commentVoteDown = comments => {
+    console.log('comment down vote action fired',comments)
+    return {
+        type: DECREMENT_COMMENT_VOTE_SCORE,
+        comments
     }
 }
 export const editedCommenttLoad = comments => {

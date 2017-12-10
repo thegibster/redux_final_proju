@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link  } from 'react-router-dom';
-// import { connect } from 'react-redux';
+import { connect } from 'react-redux';
 import Button from 'muicss/lib/react/button';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
@@ -8,6 +8,7 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import {post_vote_comments_by_id,delete_comment_by_id} from '../utils/comments_utils';
+import {commentVoteUp,commentVoteDown} from '../actions/comments_actions';
 
 
 
@@ -24,13 +25,23 @@ class Comment extends Component {
     // }
     handleDownVote = (e) => {
         e.preventDefault();
+        const {dispatch} = this.props;
         const voteType = "downVote";
         post_vote_comments_by_id(this.props.comment.id,voteType)
+            .then( (valueReturned) => {
+                console.log(valueReturned,'fialing ? handvote blah down');
+                dispatch(commentVoteDown(valueReturned));
+            });
     }
     handleUpVote = (e) => {
         e.preventDefault();
+        const {dispatch} = this.props;
         const voteType = "upVote";
         post_vote_comments_by_id(this.props.comment.id,voteType)
+            .then( (valueReturned) => {
+                console.log(valueReturned,'fialing ? handvote blah up');
+                dispatch(commentVoteUp(valueReturned));
+            });
     }
 
 
@@ -125,7 +136,11 @@ class Comment extends Component {
 }
 
 
+function mapStateToProps(comments) {
+    return comments;
+}
 
 
 
-export default Comment;
+
+export default connect(mapStateToProps)(Comment);
