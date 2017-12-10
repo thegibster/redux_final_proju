@@ -66,7 +66,7 @@ export default function (state=initialState,action) {
                     title:action.posts.title,
                     body:action.posts.body,
                     author:action.posts.author,
-                    category:action.posts.ca,
+                    category:action.posts.category,
                     voteScore:action.posts.voteScore,
                     deleted:action.posts.deleted
                 }
