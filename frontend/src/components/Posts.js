@@ -28,16 +28,16 @@ class Posts extends Component {
                 return (posts.sort((a, b) => a.filterToUse - b.filterToUse).map((post) => (
                     <div key={post.id}>
                         <li>
-                            <div className="book">
+                            <div className="">
 
-                                <div className="category-title">Title: <Link to={`${pathname +"/"+ post.id}`}>{post.title}</Link></div>
+                                <div className="">Title: <Link to={`${pathname +"/"+ post.id}`}>{post.title}</Link></div>
                                 <div>Content: {post.body}</div>
                                 <div>By: {post.author}</div>
                                 <div>Category: {post.category}</div>
                                 <div>Vote Score: {post.voteScore}</div>
                                 <div>Comments: {post.commentCount}</div>
                                 <Link to={`${pathname+"/"+post.id}/edit`}>Edit Post</Link>
-                                <div className="category-path">
+                                <div className="">
                                     {/*<Link to={`/${category.path}`}>{category.path}</Link>*/}
                                 </div>
                             </div>
@@ -49,11 +49,11 @@ class Posts extends Component {
                     posts.map((post) => (
                             <div key={post.id}>
                                 <li>
-                                    <div className="book">
-                                        <div className="book-top">
+                                    <div className="">
+                                        <div className="">
 
                                         </div>
-                                        <div className="category-title">Title: <Link to={`${pathname +"/"+ post.id}`}>{post.title}</Link></div>
+                                        <div className="">Title: <Link to={`${pathname +"/"+ post.id}`}>{post.title}</Link></div>
                                         <div>{post.body}</div>
                                         <div>By: {post.author}</div>
                                         <div>Category: {post.category}</div>
@@ -61,7 +61,7 @@ class Posts extends Component {
                                         <div>Comments: {post.commentCount}</div>
                                         <div>Date: {new Date(post.timestamp).toUTCString()}</div>
                                         <Link to={`${pathname +"/"+ post.id}/edit`}>Edit</Link>
-                                        <div className="category-path">
+                                        <div className="">
                                             {/*<Link to={`/${category.path}`}>{category.path}</Link>*/}
                                         </div>
                                     </div>

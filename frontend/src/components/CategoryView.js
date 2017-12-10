@@ -20,8 +20,8 @@ class CategoryView extends Component {
                         categories.map((category) => (
                             <div key={category.name}>
 
-                                    <div className="book">
-                                        <div className="book-top">
+                                    <div className="">
+                                        <div className="">
                                             {/*<div className="book-cover" style={{ width: 128, height: 188, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>*/}
                                             {/*<div className="book-shelf-changer">*/}
                                                 {/*<Select*/}
@@ -31,8 +31,8 @@ class CategoryView extends Component {
                                                 {/*/>*/}
                                             {/*</div>*/}
                                         </div>
-                                        {/*<div className="category-title">{category.name}</div>*/}
-                                        <div className="category-path">
+                                        {/*<div className="">{category.name}</div>*/}
+                                        <div className="">
                                             {/*<Link to={`/category/${category.path}`}>{category.path}</Link>*/}
                                             <CategoryPost posts={filteredPosts} category={category.path}/>
                                         </div>

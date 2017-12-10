@@ -174,10 +174,10 @@ class Post extends Component {
                                 (post.id && !post.deleted) ?
                                     <div key={post.id}>
                                         <li>
-                                            <div className="book">
-                                                <div className="book-top">
+                                            <div className="">
+                                                <div className="">
                                                 </div>
-                                                <div className="category-title">Title: <Link to={`/${post.id}`}>{post.title}</Link></div>
+                                                <div className="">Title: <Link to={`/${post.id}`}>{post.title}</Link></div>
                                                 <div>Date: {new Date(post.timestamp).toUTCString()}</div>
                                                 <div>{post.body}</div>
                                                 <div>By: {post.author}</div>
@@ -220,7 +220,7 @@ class Post extends Component {
                                                 </div>
 
                                                 <Comments id={post.id}/>
-                                                <div className="category-path">
+                                                <div className="">
                                                 </div>
                                             </div>
                                         </li>

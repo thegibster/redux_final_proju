@@ -18,8 +18,8 @@ class CategoryPosts extends Component {
                         posts.map((post) => (
                             <div key={post.name}>
                                 <li>
-                                    <div className="book">
-                                        <div className="book-top">
+                                    <div className="">
+                                        <div className="">
                                             {/*<div className="book-cover" style={{ width: 128, height: 188, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>*/}
                                             {/*<div className="book-shelf-changer">*/}
                                                 {/*<Select*/}
@@ -29,8 +29,8 @@ class CategoryPosts extends Component {
                                                 {/*/>*/}
                                             {/*</div>*/}
                                         </div>
-                                        <div className="category-title">{post.name}</div>
-                                        <div className="category-path">
+                                        <div className="">{post.name}</div>
+                                        <div className="">
                                             {/*<Link to={`/${category.path}`}>{category.path}</Link>*/}
                                         </div>
                                     </div>

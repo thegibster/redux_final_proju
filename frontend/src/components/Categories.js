@@ -18,10 +18,10 @@ class Categories extends Component {
                         categories.map((category) => (
                             <div key={category.name}>
                                 <li>
-                                    <div className="book">
-                                        <div className="book-top">
+                                    <div className="">
+                                        <div className="">
                                         </div>
-                                        <div className="category-path">
+                                        <div className="">
                                             <Link to={`/category/${category.path}`}>{category.path}</Link>
                                         </div>
                                     </div>
