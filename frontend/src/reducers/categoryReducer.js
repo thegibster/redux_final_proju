@@ -1,4 +1,4 @@
-import { LOAD_CATEGORIES } from '../actions/categories_action';
+import { LOAD_CATEGORIES } from '../constants';
 
 const initialState = {
     categories:[{name:'bacon'},{name:'cheese'},{name:'samich'}]

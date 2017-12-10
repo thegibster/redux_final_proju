@@ -9,7 +9,7 @@ import  {
     DELETE_POST,
     INCREASE_POSTS_COMMENT_COUNT,
     DECREASE_POSTS_COMMENT_COUNT
-}  from '../actions/post_actions';
+}  from '../constants';
 
 
 const initialState = {

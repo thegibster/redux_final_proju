@@ -1,12 +1,14 @@
 import * as CommentsAPIUtil from '../utils/comments_utils';
 
-export const CREATE_COMMENT = 'CREATE_COMMENT';
-export const GET_COMMENTS = 'GET_COMMENTS';
-export const GET_COMMENT = 'GET_COMMENT';
-export const EDIT_COMMENT = 'EDIT_COMMENT';
-export const DELETE_COMMENT = 'DELETE_COMMENT';
-export  const INCREMENT_COMMENT_VOTE_SCORE = 'INCREMENT_COMMENT_VOTE_SCORE';
-export  const DECREMENT_COMMENT_VOTE_SCORE = 'DECREMENT_COMMENT_VOTE_SCORE';
+import {
+CREATE_COMMENT,
+    GET_COMMENTS,
+    GET_COMMENT,
+    EDIT_COMMENT,
+    DELETE_COMMENT,
+    INCREMENT_COMMENT_VOTE_SCORE,
+    DECREMENT_COMMENT_VOTE_SCORE
+} from '../constants';
 
 export const commentCreator = ({id,body,author,parentId,timestamp}) => {
     return {

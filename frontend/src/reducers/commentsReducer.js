@@ -4,7 +4,7 @@ import { CREATE_COMMENT,
     EDIT_COMMENT,
     DELETE_COMMENT,
     INCREMENT_COMMENT_VOTE_SCORE,
-    DECREMENT_COMMENT_VOTE_SCORE} from '../actions/comments_actions';
+    DECREMENT_COMMENT_VOTE_SCORE} from '../constants';
 
 const initialState = {
     comments:[]

@@ -1,16 +1,18 @@
 import * as PostsAPIUtil from '../utils/posts_utils';
 
-export const CREATE_POST = 'CREATE_POST';
-export const GET_POSTS = 'GET_POSTS';
-export const GET_POST = 'GET_POST';
-export const EDIT_POST = 'EDIT_POST';
-export const DELETE_POST = 'DELETE_POST';
-export  const INCREMENT_VOTE_SCORE = 'INCREMENT_VOTE_SCORE';
-export  const DECREMENT_VOTE_SCORE = 'DECREMENT_VOTE_SCORE';
-export const SORT_POSTS = 'SORT_POSTS';
-export const EDIT_POST_COMMENT = 'EDIT_POST_COMMENT';
-export const INCREASE_POSTS_COMMENT_COUNT = 'INCREASE_POSTS_COMMENT_COUNT';
-export const DECREASE_POSTS_COMMENT_COUNT = 'DECREASE_POSTS_COMMENT_COUNT';
+import {
+    CREATE_POST,
+    GET_POSTS,
+    GET_POST,
+    EDIT_POST,
+    DELETE_POST,
+    INCREMENT_VOTE_SCORE,
+    DECREMENT_VOTE_SCORE,
+    SORT_POSTS,
+    EDIT_POST_COMMENT ,
+    INCREASE_POSTS_COMMENT_COUNT,
+    DECREASE_POSTS_COMMENT_COUNT
+} from '../constants'
 
 export const postCreator = ({new_post}) => {
     return {
@@ -85,13 +87,6 @@ export const decreasePostCommentCount = posts => {
     }
 }
 
-// export const editedPostComment = posts => {
-//     console.log('post edit comment loads action fired',posts)
-//     return {
-//         type: EDIT_POST_COMMENT,
-//         posts
-//     }
-// }
 
 export const sortPosts = posts => {
     console.log('sort post loads action fired',posts)
@@ -129,30 +124,4 @@ export const postNewPost = new_post => {
 
 }
 
-// export const postNewPost = (new_post) => dispatch => {
-//     console.log(new_post, 'postnew port from aciton file');
-//
-//     return PostsAPIUtil
-//         .post_a_post(new_post)
-//         .then(() => fetchPosts())
-//         .then((posts) => dispatch(postsLoad(posts)))
-//
-// }
-
-// export const incrementPost = ({id}) => dispatch => {
-//
-//
-//     return PostsAPIUtil
-//         .post_a_post(new_post)
-//     // .then(posts => {console.log("post new post action",posts);dispatch(postsLoad(posts))});
-//
-// }
-// export const decrementPost = ({id}) => dispatch => {
-//
-//
-//     return PostsAPIUtil
-//         .post_a_post(new_post)
-//     // .then(posts => {console.log("post new post action",posts);dispatch(postsLoad(posts))});
-//
-// }
 

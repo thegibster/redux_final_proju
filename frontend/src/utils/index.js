@@ -1,9 +1,11 @@
 //Returns all the categories from the server
 // only 3 categories exists  for this project but for scaling, this is probably cleaner in the long run
+const base = 'http://localhost:3001';
+
 export const fetchCategories = () => {
 
 
-    return fetch(`http://localhost:3001/categories`,{
+    return fetch(`${base}/categories`,{
         method: 'get',
         headers: {
             'Authorization': 'cake'
@@ -16,7 +18,7 @@ export const fetchCategories = () => {
 export const fetchPosts = () => {
 
 
-    return fetch(`http://localhost:3001/posts`,{
+    return fetch(`${base}/posts`,{
         method: 'get',
         headers: {
             'Authorization': 'cake'
@@ -29,7 +31,7 @@ export const fetchPosts = () => {
 export const fetchComments = () => {
 
 
-    return fetch(`http://localhost:3001/comments`,{
+    return fetch(`${base}/comments`,{
         method: 'get',
         headers: {
             'Authorization': 'cake'
