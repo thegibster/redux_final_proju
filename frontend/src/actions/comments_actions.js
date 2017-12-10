@@ -21,6 +21,13 @@ export const commentCreator = ({id,body,author,parentId,timestamp}) => {
 
     }
 }
+
+export const deleteTheComment = comments => {
+    return {
+        type: DELETE_COMMENT,
+        comments
+    };
+}
 export const commentVoteUp = comments => {
     console.log('comment up vote action fired',comments)
     return {

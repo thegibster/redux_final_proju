@@ -20,7 +20,12 @@ export default function (state=initialState,action) {
     switch(action.type){
 
         case DELETE_COMMENT:
-            return state.filter(category => category.name !== action.name);
+            return {
+                ...state,
+                comments: [
+                    ...state.comments.filter((comment) => comment.id !== action.comments.id)
+                ]
+            };
         case CREATE_COMMENT:
             console.log("CREATE_COMMENT was called",action, state);
 

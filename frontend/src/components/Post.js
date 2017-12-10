@@ -79,6 +79,7 @@ class Post extends Component {
                 this.handleBodyAuthor();
             });
     }
+
     handleNewCommentSubmit = (e) => {
         e.preventDefault();
         const {dispatch} = this.props;

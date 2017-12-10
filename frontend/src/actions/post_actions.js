@@ -10,7 +10,7 @@ export  const DECREMENT_VOTE_SCORE = 'DECREMENT_VOTE_SCORE';
 export const SORT_POSTS = 'SORT_POSTS';
 export const EDIT_POST_COMMENT = 'EDIT_POST_COMMENT';
 export const INCREASE_POSTS_COMMENT_COUNT = 'INCREASE_POSTS_COMMENT_COUNT';
-
+export const DECREASE_POSTS_COMMENT_COUNT = 'DECREASE_POSTS_COMMENT_COUNT';
 
 export const postCreator = ({new_post}) => {
     return {
@@ -67,6 +67,13 @@ export const editedPostLoad = posts => {
 export const increasePostCommentCount = posts => {
     return {
         type: INCREASE_POSTS_COMMENT_COUNT,
+        posts
+    }
+}
+
+export const decreasePostCommentCount = posts => {
+    return {
+        type: DECREASE_POSTS_COMMENT_COUNT,
         posts
     }
 }

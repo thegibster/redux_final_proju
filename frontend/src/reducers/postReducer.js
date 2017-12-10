@@ -7,7 +7,8 @@ import  {
     INCREMENT_VOTE_SCORE,
     DECREMENT_VOTE_SCORE,
     EDIT_POST_COMMENT,
-    INCREASE_POSTS_COMMENT_COUNT
+    INCREASE_POSTS_COMMENT_COUNT,
+    DECREASE_POSTS_COMMENT_COUNT
 }  from '../actions/post_actions';
 
 
@@ -124,6 +125,21 @@ export default function (state=initialState,action) {
                 posts : [...state.posts.map(newerState)],
             };
 
+        case DECREASE_POSTS_COMMENT_COUNT:
+            const newerDState = (post) => {
+                let newVals = {};
+                if(post.id === action.posts.parentId) {
+                    newVals = Object.assign({},post,post.commentCount-=1);
+                    console.log('did comment increase', newVals)
+                    return newVals;
+                }else{
+                    return post;
+                }
+            }
+            return{
+                ...state,
+                posts : [...state.posts.map(newerDState)],
+            };
 
         // case EDIT_POST_COMMENT:
         //     const newerState = (post) => {

@@ -8,7 +8,8 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import {post_vote_comments_by_id,delete_comment_by_id} from '../utils/comments_utils';
-import {commentVoteUp,commentVoteDown} from '../actions/comments_actions';
+import {commentVoteUp,commentVoteDown,deleteTheComment} from '../actions/comments_actions';
+import {decreasePostCommentCount} from '../actions/post_actions';
 
 
 
@@ -31,6 +32,7 @@ class Comment extends Component {
             .then( (valueReturned) => {
                 console.log(valueReturned,'fialing ? handvote blah down');
                 dispatch(commentVoteDown(valueReturned));
+
             });
     }
     handleUpVote = (e) => {
@@ -54,8 +56,14 @@ class Comment extends Component {
     };
 
     handleDeleteConfirm = (e) => {
+        e.preventDefault();
+        const {dispatch} = this.props;
         console.log('deleted gont',this.props.comment.id);
         delete_comment_by_id(this.props.comment.id)
+            .then((returnValue) => {
+                dispatch(deleteTheComment(returnValue));
+                dispatch(decreasePostCommentCount(this.props.comment));
+            })
         this.setState({openConfirm: false});
 
     };
@@ -78,7 +86,7 @@ class Comment extends Component {
             />,
         ];
 
-        console.log("single comment const", comment)
+        console.log("single comment const", comment,this.props)
 
         return (
             <div>
