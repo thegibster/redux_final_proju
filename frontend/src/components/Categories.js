@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Link  } from 'react-router-dom';
+import { Link  } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 class Categories extends Component {
@@ -20,16 +20,7 @@ class Categories extends Component {
                                 <li>
                                     <div className="book">
                                         <div className="book-top">
-                                            {/*<div className="book-cover" style={{ width: 128, height: 188, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>*/}
-                                            {/*<div className="book-shelf-changer">*/}
-                                                {/*<Select*/}
-                                                    {/*name={book.id}*/}
-                                                    {/*onChange={handleInputChange}*/}
-                                                    {/*value={`${book.shelf}`}*/}
-                                                {/*/>*/}
-                                            {/*</div>*/}
                                         </div>
-                                        {/*<div className="category-title">{category.name}</div>*/}
                                         <div className="category-path">
                                             <Link to={`/category/${category.path}`}>{category.path}</Link>
                                         </div>
@@ -52,5 +43,3 @@ function mapStateToProps(categories) {
 }
 
 export default connect(mapStateToProps)(Categories);
-
-// export default Categories;

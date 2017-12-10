@@ -1,25 +1,23 @@
 import React, { Component } from 'react';
 // import { Route, Link  } from 'react-router-dom';
 import { connect } from 'react-redux';
-import Category_Post from './Category_Post';
 
-class Category_View extends Component {
+class CategoryPosts extends Component {
     render () {
-         console.log("category comp", this.props.categories.categories);
-         const  categories  = this.props.categories.categories.filter((category) => category.name === this.props.match.params.id );
-         const filteredPosts = this.props.posts.posts.filter((post) => post.category === this.props.match.params.id);
-         console.log("everythting in props", categories)
+            console.log("category posts", this.props.posts);
+         const { posts } = this.props.posts;
+         console.log("cstergy hmhmhmhm", posts)
 
 
         return (
-            <div className="category">
+            <div className="posts">
                 {/*<h1>Category:</h1>*/}
+                <ol className="categories-grid">
+                    { (posts.length > 0) ?
 
-                    { (categories !== null && Object.keys(categories ).length !== 0 ) ?
-
-                        categories.map((category) => (
-                            <div key={category.name}>
-
+                        posts.map((post) => (
+                            <div key={post.name}>
+                                <li>
                                     <div className="book">
                                         <div className="book-top">
                                             {/*<div className="book-cover" style={{ width: 128, height: 188, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>*/}
@@ -31,29 +29,28 @@ class Category_View extends Component {
                                                 {/*/>*/}
                                             {/*</div>*/}
                                         </div>
-                                        {/*<div className="category-title">{category.name}</div>*/}
+                                        <div className="category-title">{post.name}</div>
                                         <div className="category-path">
-                                            {/*<Link to={`/category/${category.path}`}>{category.path}</Link>*/}
-                                            <Category_Post posts={filteredPosts} category={category.path}/>
+                                            {/*<Link to={`/${category.path}`}>{category.path}</Link>*/}
                                         </div>
                                     </div>
-
+                                </li>
                             </div>
                         ))
 
-                    : <div>Nothing to See here</div>
+                    : <div>No Posts for this Category.</div>
                     }
 
-
+                </ol>
             </div>
         )
     }
 }
 
-function mapStateToProps(categories) {
-    return categories;
+function mapStateToProps(posts) {
+    return posts;
 }
 
-export default connect(mapStateToProps)(Category_View);
+export default connect(mapStateToProps)(CategoryPosts);
 
 // export default Categories;

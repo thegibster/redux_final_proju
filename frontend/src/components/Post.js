@@ -13,25 +13,17 @@ import Input from 'muicss/lib/react/input';
 import Textarea from 'muicss/lib/react/textarea';
 import {post_a_comment} from '../utils/comments_utils';
 import {postVote_by_id,delete_all_posts_comments_by_id} from '../utils/posts_utils'
-import {bindActionCreators} from 'redux';
 import * as CommentActions  from '../actions/comments_actions';
-import {increasePostCommentCount,postUpscore,postDownscore} from '../actions/post_actions';
+import {increasePostCommentCount,postUpscore,postDownscore,deletePost} from '../actions/post_actions';
 
 
 const uuidV1 = require('uuid/v1');
 
-//might need to either filter from the state of posts right here
-//or actually execute the api call for a single post
-
-const style = {
-    margin: 12,
-};
 
 class Post extends Component {
 
     componentDidMount(){
 
-        // this.props.dispatch({type:'GET_COMMENTS', comments:[{parentId:'8xf0y6ziyjabvozdd253nd',id:'cookies',body:'no freaking way'}]});
         this.props.dispatch(CommentActions.fetchCommentsByParentID({id:this.props.match.params.id})());
         console.log(this.props,"urika from Post");
 
@@ -57,8 +49,10 @@ class Post extends Component {
     };
 
     handleDeleteConfirm = (e) => {
+        const {dispatch} = this.props;
         console.log('deleted gont',this.props.match.params.id);
         delete_all_posts_comments_by_id(this.props.match.params.id);
+        dispatch(deletePost(this.props.posts.posts.filter(post => post.id === this.props.match.params.id)[0]))
         this.setState({openConfirm: false});
 
     };
@@ -151,19 +145,7 @@ class Post extends Component {
                 onClick={this.handleDeleteConfirm}
             />,
         ];
-        // const actions = [
-        //     <FlatButton
-        //         label="Cancel"
-        //         primary={true}
-        //         onClick={this.handleClose}
-        //     />,
-        //     <FlatButton
-        //         label="Submit"
-        //         primary={true}
-        //         disabled={this.state.emptyBodyAuthor}
-        //         onClick={this.handleClose}
-        //     />,
-        // ];
+
 
         console.log("category posts jive turkey",this.props);
         // const { post } = this.props.post;
@@ -174,7 +156,6 @@ class Post extends Component {
         this.props.dispatch(CommentActions.fetchCommentsByParentID(this.props.match.params.id));
         console.log(singlePost, 'barking')
 
-        // return(<div>hi</div>)
         return (
             <div className="posts">
                 <div>Post</div>
@@ -195,14 +176,6 @@ class Post extends Component {
                                         <li>
                                             <div className="book">
                                                 <div className="book-top">
-                                                    {/*<div className="book-cover" style={{ width: 128, height: 188, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>*/}
-                                                    {/*<div className="book-shelf-changer">*/}
-                                                    {/*<Select*/}
-                                                    {/*name={book.id}*/}
-                                                    {/*onChange={handleInputChange}*/}
-                                                    {/*value={`${book.shelf}`}*/}
-                                                    {/*/>*/}
-                                                    {/*</div>*/}
                                                 </div>
                                                 <div className="category-title">Title: <Link to={`/${post.id}`}>{post.title}</Link></div>
                                                 <div>Date: {new Date(post.timestamp).toUTCString()}</div>
@@ -248,7 +221,6 @@ class Post extends Component {
 
                                                 <Comments id={post.id}/>
                                                 <div className="category-path">
-                                                    {/*<Link to={`/${category.path}`}>{category.path}</Link>*/}
                                                 </div>
                                             </div>
                                         </li>
@@ -256,7 +228,6 @@ class Post extends Component {
                                     : <div>No bueno</div>
                             ))
 
-                            // : <div>{`No Post matching the id: ${postID.match.params.id} was found.`}</div>
                             :
                             (this.props.match.params.id && singlePost.length === 0 )
                                 ? <div>This Post has been deleted.</div>
@@ -275,13 +246,5 @@ function mapStateToProps(posts) {
     return posts;
 }
 
-// function mapDispatchToProps(dispatch){
-//     return {
-//         actions: bindActionCreators(CommentActions,dispatch)
-//     };
-// }
 
 export default connect(mapStateToProps)(Post);
-// export default  Post;
-
-// export default Categories;

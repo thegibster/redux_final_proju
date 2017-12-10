@@ -6,7 +6,7 @@ import  {
     EDIT_POST,
     INCREMENT_VOTE_SCORE,
     DECREMENT_VOTE_SCORE,
-    EDIT_POST_COMMENT,
+    DELETE_POST,
     INCREASE_POSTS_COMMENT_COUNT,
     DECREASE_POSTS_COMMENT_COUNT
 }  from '../actions/post_actions';
@@ -27,8 +27,8 @@ export default function (state=initialState,action) {
             // return state.filter(category => category.name !== action.name);
             return {
 
-            ...state,
-            posts: [...state.posts,  {
+                ...state,
+                posts: [...state.posts,  {
                     id,
                     timestamp,
                     title,
@@ -38,7 +38,7 @@ export default function (state=initialState,action) {
                     voteScore,
                     deleted
                 }
-            ]
+                ]
 
             };
         case GET_POSTS:
@@ -141,20 +141,12 @@ export default function (state=initialState,action) {
                 posts : [...state.posts.map(newerDState)],
             };
 
-        // case EDIT_POST_COMMENT:
-        //     const newerState = (post) => {
-        //         let newVals = {};
-        //         if(post.id === action.posts.parentId) {
-        //             newVals = Object.assign({},post,post.commentCount+=1);
-        //             return newVals;
-        //         }else{
-        //             return post;
-        //         }
-        //     }
-        //     return{
-        //         ...state,
-        //         posts : [...state.posts.map(newerState)],
-        //     };
+        case DELETE_POST:
+
+            return{
+                ...state,
+                posts : [...state.posts.filter((post) => post.id !== action.posts.id)],
+            };
 
         default:
             return state;

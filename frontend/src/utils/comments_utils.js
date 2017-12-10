@@ -1,5 +1,3 @@
-const uuidV1 = require('uuid/v1');
-
 export const fetch_posts_comments = (post_id) => {
 
 
@@ -14,7 +12,7 @@ export const fetch_posts_comments = (post_id) => {
 }
 
 export const post_a_comment = (new_comment) => {
-console.log(new_comment,"this is utils new comment")
+    console.log(new_comment,"this is utils new comment")
     const parameters = {
         id:new_comment.id,
         parentId:new_comment.parentId,
@@ -25,7 +23,7 @@ console.log(new_comment,"this is utils new comment")
         deleted:false,
         parentDeleted:false
     };
-console.log(parameters)
+    console.log(parameters)
     return fetch(`http://localhost:3001/comments`,{
         method: 'post',
         headers: {
@@ -66,7 +64,7 @@ export const post_vote_comments_by_id = (id,voteScore) => {
         },
         body:JSON.stringify({option})
     })
-    .then((res) => res.json())
+        .then((res) => res.json())
     //Can clean up the return data by perhaps fetching the key[categories] in the return
     // .then(({ hits }) => hits.map(({ recipe }) => recipe))
 }
@@ -81,7 +79,7 @@ export const edit_comment_by_id = (id,edit_comment) => {
             'Content-Type': 'application/json'
         },
         body:JSON.stringify(edit_comment)
-        })
+    })
         .then((res) => res.json())
     //Can clean up the return data by perhaps fetching the key[categories] in the return
     // .then(({ hits }) => hits.map(({ recipe }) => recipe))

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import All_Posts from './All_Posts'
+import AllPosts from './AllPosts'
 import { connect } from 'react-redux';
 
 class Home extends Component {
@@ -8,7 +8,7 @@ class Home extends Component {
             <div >
                 <h3>Home</h3>
                 {/*<Posts posts={this.props}/>*/}
-                <All_Posts location={this.props.location}/>
+                <AllPosts location={this.props.location}/>
             </div>
         )
     }

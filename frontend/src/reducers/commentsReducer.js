@@ -1,8 +1,8 @@
 import { CREATE_COMMENT,
     GET_COMMENTS,
     GET_COMMENT,
-    EDIT_COMMENT
-    ,DELETE_COMMENT,
+    EDIT_COMMENT,
+    DELETE_COMMENT,
     INCREMENT_COMMENT_VOTE_SCORE,
     DECREMENT_COMMENT_VOTE_SCORE} from '../actions/comments_actions';
 
@@ -13,9 +13,7 @@ const initialState = {
 export default function (state=initialState,action) {
 
     const { id,timestamp,parentId,body,author,voteScore,parentDeleted } = action;
-    // const  deepcategories = action.categories;
-    // console.log("why not", action)
-    // const {categories} = action;
+
 
     switch(action.type){
 

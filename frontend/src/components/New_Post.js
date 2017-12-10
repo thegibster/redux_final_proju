@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Redirect  } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Form from 'muicss/lib/react/form';
 import Input from 'muicss/lib/react/input';
@@ -8,7 +7,6 @@ import Option from 'muicss/lib/react/option';
 import Textarea from 'muicss/lib/react/textarea';
 import Button from 'muicss/lib/react/button';
 import Container from 'muicss/lib/react/container';
-import {post_a_post} from '../utils/posts_utils';
 import { postNewPost } from   '../actions/post_actions';
 import {postLoad} from '../actions/post_actions';
 

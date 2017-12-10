@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {  Link  } from 'react-router-dom';
 // import { connect } from 'react-redux';
 
-class Category_Post extends Component {
+class CategoryPost extends Component {
     render () {
         const filteredPosts = this.props.posts;
         console.log('fiiltered',filteredPosts)
@@ -56,6 +56,6 @@ class Category_Post extends Component {
 //     return categories;
 // }
 //
-// export default connect(mapStateToProps)(Category_Post);
+// export default connect(mapStateToProps)(CategoryPost);
 
-export default Category_Post;
+export default CategoryPost;

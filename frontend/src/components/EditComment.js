@@ -1,13 +1,6 @@
 import React, { Component } from 'react';
-// import { Link  } from 'react-router-dom';
-// import { connect } from 'react-redux';
 import Button from 'muicss/lib/react/button';
 import { connect } from 'react-redux';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
-import Dialog from 'material-ui/Dialog';
-import FlatButton from 'material-ui/FlatButton';
-import RaisedButton from 'material-ui/RaisedButton';
 import Form from 'muicss/lib/react/form';
 import Input from 'muicss/lib/react/input';
 import Textarea from 'muicss/lib/react/textarea';
@@ -15,11 +8,10 @@ import Loader from 'react-loader';
 import Container from 'muicss/lib/react/container';
 import {edit_comment_by_id} from '../utils/comments_utils';
 import {fetchCommentByID,editedCommenttLoad} from '../actions/comments_actions';
-// import {editedPostComment} from '../actions/post_actions';
 
 
 
-class Edit_Comment extends Component {
+class EditComment extends Component {
 
     componentDidMount(){
         this.props.dispatch(fetchCommentByID({id:this.props.match.params.id})());
@@ -45,7 +37,7 @@ class Edit_Comment extends Component {
         e.preventDefault();
         const {dispatch} = this.props;
         const finalObEdit = {};
-        const sendChanges = Object.keys(this.state).forEach((key) => {
+        Object.keys(this.state).forEach((key) => {
             if(this.state[key].length > 0){
                 console.log(this.state[key])
                 finalObEdit[key] = this.state[key];
@@ -56,7 +48,6 @@ class Edit_Comment extends Component {
             .then( (valueReturned) => {
                 console.log((valueReturned))
                 dispatch(editedCommenttLoad(valueReturned));
-                // dispatch(editedPostComment(valueReturned));
                 this.setState({
                     body:'',
                     author:''
@@ -111,4 +102,4 @@ function mapStateToProps(comments) {
     return comments;
 }
 
-export default connect(mapStateToProps)(Edit_Comment);
+export default connect(mapStateToProps)(EditComment);

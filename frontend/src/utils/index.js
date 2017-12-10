@@ -9,8 +9,8 @@ export const fetchCategories = () => {
             'Authorization': 'cake'
         }})
         .then((res) => res.json())
-        //Can clean up the return data by perhaps fetching the key[categories] in the return
-        // .then(({ hits }) => hits.map(({ recipe }) => recipe))
+    //Can clean up the return data by perhaps fetching the key[categories] in the return
+    // .then(({ hits }) => hits.map(({ recipe }) => recipe))
 }
 
 export const fetchPosts = () => {

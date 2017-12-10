@@ -27,6 +27,13 @@ export const postCreator = ({new_post}) => {
     }
 }
 
+export const deletePost = posts => {
+    return {
+        type: DELETE_POST,
+        posts
+    };
+}
+
 export const postUpscore = posts => {
     return {
         type: INCREMENT_VOTE_SCORE,

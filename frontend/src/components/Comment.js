@@ -3,15 +3,13 @@ import { Link  } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Button from 'muicss/lib/react/button';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
+import {Card, CardHeader, CardText} from 'material-ui/Card';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import {post_vote_comments_by_id,delete_comment_by_id} from '../utils/comments_utils';
 import {commentVoteUp,commentVoteDown,deleteTheComment} from '../actions/comments_actions';
 import {decreasePostCommentCount} from '../actions/post_actions';
-
-
 
 class Comment extends Component {
 
@@ -20,10 +18,6 @@ class Comment extends Component {
         openConfirm: false,
     };
 
-    // editComment = (e) => {
-    //     e.preventDefault();
-    //     this.props.history.push(`/comments/${this.props.comment.id}/edit`);
-    // }
     handleDownVote = (e) => {
         e.preventDefault();
         const {dispatch} = this.props;
@@ -67,7 +61,6 @@ class Comment extends Component {
         this.setState({openConfirm: false});
 
     };
-
 
 
     render () {
@@ -128,17 +121,12 @@ class Comment extends Component {
                                         </CardText>
                                     </Card>
                                     <br />
-
-
-
                             </div>
 
                      : <div>No Comment Here</div>
                     }
                 </MuiThemeProvider>
-
             </div>
-
         )
     }
 }
@@ -147,8 +135,6 @@ class Comment extends Component {
 function mapStateToProps(comments) {
     return comments;
 }
-
-
 
 
 export default connect(mapStateToProps)(Comment);

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Route, Link, Redirect  } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Form from 'muicss/lib/react/form';
 import Input from 'muicss/lib/react/input';
@@ -12,7 +11,7 @@ import Loader from 'react-loader';
 import {edit_post_by_id} from '../utils/posts_utils';
 import {editedPostLoad} from '../actions/post_actions';
 
-class Edit_Post extends Component {
+class EditPost extends Component {
 
     state = {
 
@@ -42,7 +41,7 @@ class Edit_Post extends Component {
         e.preventDefault();
         const {dispatch} = this.props;
         const finalObEdit = {};
-        const sendChanges = Object.keys(this.state).forEach((key) => {
+        Object.keys(this.state).forEach((key) => {
             if(this.state[key].length > 0){
                 console.log(this.state[key])
                 finalObEdit[key] = this.state[key];
@@ -118,6 +117,6 @@ function mapStateToProps(categories) {
     return categories;
 }
 
-export default connect(mapStateToProps)(Edit_Post);
+export default connect(mapStateToProps)(EditPost);
 
-// export default Edit_Post;
+// export default EditPost;

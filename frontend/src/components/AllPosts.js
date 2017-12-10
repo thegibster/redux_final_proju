@@ -5,7 +5,7 @@ import Select from 'muicss/lib/react/select';
 import Option from 'muicss/lib/react/option';
 
 
-class All_Posts extends Component {
+class AllPosts extends Component {
     state = {
         sortBy:''
     }
@@ -28,24 +28,14 @@ class All_Posts extends Component {
                     <div key={post.id}>
                         <li>
                             <div className="book">
-                                <div className="book-top">
-                                    {/*<div className="book-cover" style={{ width: 128, height: 188, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>*/}
-                                    {/*<div className="book-shelf-changer">*/}
-                                    {/*<Select*/}
-                                    {/*name={book.id}*/}
-                                    {/*onChange={handleInputChange}*/}
-                                    {/*value={`${book.shelf}`}*/}
-                                    {/*/>*/}
-                                    {/*</div>*/}
-                                </div>
-                                {/*<div className="category-title">Title: <Link to={`${pathname+post.id}`}>{post.title}</Link></div>*/}
-                                <div>{post.body}</div>
+
+                                <div className="category-title">Title: <Link to={`posts${pathname + post.id}`}>{post.title}</Link></div>
+                                <div>Content: {post.body}</div>
                                 <div>By: {post.author}</div>
                                 <div>Category: {post.category}</div>
                                 <div>Vote Score: {post.voteScore}</div>
                                 <div>Comments: {post.commentCount}</div>
-                                <div>Date: {new Date(post.timestamp).toUTCString()}</div>
-                                <Link to={`${pathname + post.id}/edit`}>Edit</Link>
+                                <Link to={`${pathname+"/"+post.id}/edit`}>Edit Post</Link>
                                 <div className="category-path">
                                     {/*<Link to={`/${category.path}`}>{category.path}</Link>*/}
                                 </div>
@@ -60,16 +50,9 @@ class All_Posts extends Component {
                                 <li>
                                     <div className="book">
                                         <div className="book-top">
-                                            {/*<div className="book-cover" style={{ width: 128, height: 188, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>*/}
-                                            {/*<div className="book-shelf-changer">*/}
-                                            {/*<Select*/}
-                                            {/*name={book.id}*/}
-                                            {/*onChange={handleInputChange}*/}
-                                            {/*value={`${book.shelf}`}*/}
-                                            {/*/>*/}
-                                            {/*</div>*/}
+
                                         </div>
-                                        {/*<div className="category-title">Title: <Link to={`${pathname+post.id}`}>{post.title}</Link></div>*/}
+                                        <div className="category-title">Title: <Link to={`posts${pathname + post.id}`}>{post.title}</Link></div>
                                         <div>{post.body}</div>
                                         <div>By: {post.author}</div>
                                         <div>Category: {post.category}</div>
@@ -97,7 +80,7 @@ class All_Posts extends Component {
                     return curriedFilter('timestamp');
                 default:
                     return curriedFilter('')
-            };
+            }
         };
 
         return (
@@ -130,7 +113,7 @@ function mapStateToProps(posts) {
     return posts;
 }
 
-export default connect(mapStateToProps)(All_Posts);
+export default connect(mapStateToProps)(AllPosts);
 
 
 // export default Categories;

@@ -49,7 +49,7 @@ export const post_a_post = (new_post) => {
             'Content-Type': 'application/json'
         },
         body:JSON.stringify(parameters)
-        })
+    })
         .then((res) => res.json())
 
 
@@ -85,7 +85,7 @@ export const postVote_by_id = (id,voteScore) => {
             'Content-Type': 'application/json'
         },
         body:JSON.stringify({option})
-        })
+    })
         .then((res) => res.json())
     //Can clean up the return data by perhaps fetching the key[categories] in the return
     // .then(({ hits }) => hits.map(({ recipe }) => recipe))
@@ -101,7 +101,7 @@ export const edit_post_by_id = (id,edit_post) => {
             'Content-Type': 'application/json'
         },
         body:JSON.stringify(edit_post)
-        })
+    })
 
         .then((res) => res.json())
     //Can clean up the return data by perhaps fetching the key[categories] in the return
