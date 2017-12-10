@@ -86,7 +86,7 @@ export const postVote_by_id = (id,voteScore) => {
         },
         body:JSON.stringify({option})
         })
-        // .then((res) => res.json())
+        .then((res) => res.json())
     //Can clean up the return data by perhaps fetching the key[categories] in the return
     // .then(({ hits }) => hits.map(({ recipe }) => recipe))
 }

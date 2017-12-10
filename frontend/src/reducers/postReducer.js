@@ -77,13 +77,35 @@ export default function (state=initialState,action) {
                 posts: [...action.posts]
             };
         case INCREMENT_VOTE_SCORE:
-            return {
-
+            const newerVUState = (post) => {
+                let newVals = {};
+                if(post.id === action.posts.id) {
+                    newVals = Object.assign({},post,post.voteScore+=1);
+                    console.log('did upvote increase', newVals)
+                    return newVals;
+                }else{
+                    return post;
+                }
+            }
+            return{
+                ...state,
+                posts : [...state.posts.map(newerVUState)],
             };
 
         case DECREMENT_VOTE_SCORE:
-            return {
-
+            const newerVDState = (post) => {
+                let newVals = {};
+                if(post.id === action.posts.id) {
+                    newVals = Object.assign({},post,post.voteScore-=1);
+                    console.log('did downvote increase', newVals)
+                    return newVals;
+                }else{
+                    return post;
+                }
+            }
+            return{
+                ...state,
+                posts : [...state.posts.map(newerVDState)],
             };
 
         case INCREASE_POSTS_COMMENT_COUNT:

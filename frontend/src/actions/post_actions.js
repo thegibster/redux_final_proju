@@ -27,6 +27,19 @@ export const postCreator = ({new_post}) => {
     }
 }
 
+export const postUpscore = posts => {
+    return {
+        type: INCREMENT_VOTE_SCORE,
+        posts
+    };
+}
+export const postDownscore = posts => {
+    return {
+        type: DECREMENT_VOTE_SCORE,
+        posts
+    };
+}
+
 export const postsLoad = posts => {
     console.log('posts loads action fired',posts)
     return {

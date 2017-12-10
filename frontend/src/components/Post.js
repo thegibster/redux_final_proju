@@ -15,7 +15,7 @@ import {post_a_comment} from '../utils/comments_utils';
 import {postVote_by_id,delete_all_posts_comments_by_id} from '../utils/posts_utils'
 import {bindActionCreators} from 'redux';
 import * as CommentActions  from '../actions/comments_actions';
-import {increasePostCommentCount} from '../actions/post_actions';
+import {increasePostCommentCount,postUpscore,postDownscore} from '../actions/post_actions';
 
 
 const uuidV1 = require('uuid/v1');
@@ -103,13 +103,23 @@ class Post extends Component {
 
     handleDownVote = (e) => {
         e.preventDefault();
+        const {dispatch} = this.props;
         const voteType = "downVote";
         postVote_by_id(this.state.parentId,voteType)
+            .then( (valueReturned) => {
+                console.log((valueReturned))
+                dispatch(postDownscore(valueReturned));
+            });
     }
     handleUpVote = (e) => {
         e.preventDefault();
+        const {dispatch} = this.props;
         const voteType = "upVote";
         postVote_by_id(this.state.parentId,voteType)
+            .then( (valueReturned) => {
+                console.log((valueReturned))
+                dispatch(postUpscore(valueReturned));
+            });
     }
     handleBodyChange = (e) => {
         this.setState({body: e.target.value},() => {

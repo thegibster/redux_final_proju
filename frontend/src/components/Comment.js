@@ -93,22 +93,22 @@ class Comment extends Component {
                                             <Button onClick={this.handleUpVote}>+</Button>
                                             <Button onClick={this.handleDownVote}>-</Button><br />
                                             <Button><Link to={`/comments/${this.props.comment.id}/edit`}>Edit Comment</Link></Button>
+                                            <div>
+                                                <RaisedButton label="Delete" onClick={this.handleOpenConfirm} />
+                                                <Dialog
+                                                    title="Confirm Delete"
+                                                    actions={actions}
+                                                    modal={false}
+                                                    open={this.state.openConfirm}
+                                                    onRequestClose={this.handleCloseConfirm}
+                                                >
+                                                    Warning: You are about to delete this Comment.
+                                                </Dialog>
+                                            </div>
 
                                         </CardText>
                                     </Card>
                                     <br />
-                                    <div>
-                                        <RaisedButton label="Delete" onClick={this.handleOpenConfirm} />
-                                        <Dialog
-                                            title="Confirm Delete"
-                                            actions={actions}
-                                            modal={false}
-                                            open={this.state.openConfirm}
-                                            onRequestClose={this.handleCloseConfirm}
-                                        >
-                                            Warning: You are about to delete this Comment.
-                                        </Dialog>
-                                    </div>
 
 
 
