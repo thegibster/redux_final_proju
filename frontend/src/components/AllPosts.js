@@ -29,7 +29,7 @@ class AllPosts extends Component {
                         <li>
                             <div className="">
 
-                                <div className="">Title: <Link to={`posts${pathname + post.id}`}>{post.title}</Link></div>
+                                <div className="">Title: <Link to={`${post.category}${pathname + post.id}`}>{post.title}</Link></div>
                                 <div>Content: {post.body}</div>
                                 <div>By: {post.author}</div>
                                 <div>Category: {post.category}</div>
@@ -52,7 +52,7 @@ class AllPosts extends Component {
                                         <div className="">
 
                                         </div>
-                                        <div className="">Title: <Link to={`posts${pathname + post.id}`}>{post.title}</Link></div>
+                                        <div className="">Title: <Link to={`${post.category}${pathname + post.id}`}>{post.title}</Link></div>
                                         <div>{post.body}</div>
                                         <div>By: {post.author}</div>
                                         <div>Category: {post.category}</div>
