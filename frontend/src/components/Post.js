@@ -145,6 +145,19 @@ class Post extends Component {
                 onClick={this.handleDeleteConfirm}
             />,
         ];
+        const commentActions = [
+            <FlatButton
+                label="Cancel"
+                primary={true}
+                onClick={this.handleClose}
+            />,
+            <FlatButton
+                label="Submit"
+                primary={true}
+                keyboardFocused={true}
+                onClick={this.handleNewCommentSubmit}
+            />,
+        ];
 
 
         console.log("category posts jive turkey",this.props);
@@ -206,14 +219,13 @@ class Post extends Component {
                                                     <RaisedButton label="Add Comment" onClick={this.handleOpen} />
                                                     <Dialog
                                                         title="New Comment:"
-                                                        actions={actions}
+                                                        actions={commentActions}
                                                         modal={true}
                                                         open={this.state.open}
                                                     >
-                                                        <Form onSubmit={this.handleNewCommentSubmit}>
+                                                        <Form>
                                                             <Input hint="Author" value={this.state.author} required={true} onChange={this.handleAuthorChange}/>
                                                             <Textarea hint="Body" value={this.state.body}  required={true} onChange={this.handleBodyChange}/>
-                                                            <Button variant="raised">Submit</Button>
                                                         </Form>
                                                     </Dialog>
 
