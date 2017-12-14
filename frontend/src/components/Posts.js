@@ -110,9 +110,7 @@ class Posts extends Component {
     }
 }
 
-function mapStateToProps(posts) {
-    return posts;
-}
+const mapStateToProps = posts =>  posts;
 
 function mapDispatchToProps(dispatch){
     return {

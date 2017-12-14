@@ -254,9 +254,7 @@ class Post extends Component {
     }
 }
 
-function mapStateToProps(posts) {
-    return posts;
-}
+const mapStateToProps = posts =>  posts ;
 
 
 export default connect(mapStateToProps)(Post);

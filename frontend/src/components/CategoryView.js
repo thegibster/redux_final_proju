@@ -53,9 +53,7 @@ class CategoryView extends Component {
     }
 }
 
-function mapStateToProps(categories) {
-    return categories;
-}
+const mapStateToProps = categories =>  categories ;
 
 export default connect(mapStateToProps)(CategoryView);
 

@@ -14,7 +14,6 @@ export default function (state=initialState,action) {
 
     const { id,timestamp,parentId,body,author,voteScore,parentDeleted } = action;
 
-
     switch(action.type){
 
         case DELETE_COMMENT:
@@ -25,15 +24,6 @@ export default function (state=initialState,action) {
                 ]
             };
         case CREATE_COMMENT:
-            console.log("CREATE_COMMENT was called",action, state);
-
-            // return Object.assign({}, state, {
-            //     categories: action.categories
-            // })
-            console.log('this is how it look', state.comments)
-
-
-
             return {
                 ...state,
                 // posts : [...state.posts.map(newerState)],
@@ -47,8 +37,7 @@ export default function (state=initialState,action) {
                     parentDeleted
                 }
                 ]
-            }
-
+            };
         case GET_COMMENTS:
             return {
                 ...state,
@@ -60,22 +49,15 @@ export default function (state=initialState,action) {
                 comments: [...action.comments]
             };
         case EDIT_COMMENT:
-            console.log('EDIT COMMENT LOG message',state.comments.filter((comment) => comment.id !== action.comments.id));
+            const comments = state.comments.filter(comment => comment.id !== action.comments.id).concat(action.comments);
             return {
-                ...state,
-                comments: [
-                    ...state.comments.filter((comment) => comment.id !== action.comments.id),
-                    {...action.comments}
-                ]
+                comments
             };
 
         case INCREMENT_COMMENT_VOTE_SCORE :
             const newerVUState = (comment) => {
-                let newVals = {};
                 if(comment.id === action.comments.id) {
-                    newVals = Object.assign({},comment,comment.voteScore+=1);
-                    console.log('did downvote increase', newVals)
-                    return newVals;
+                    return {...comment, voteScore: comment.voteScore + 1};
                 }else{
                     return comment;
                 }
@@ -86,11 +68,8 @@ export default function (state=initialState,action) {
             };
         case DECREMENT_COMMENT_VOTE_SCORE:
             const newerVDState = (comment) => {
-                let newVals = {};
                 if(comment.id === action.comments.id) {
-                    newVals = Object.assign({},comment,comment.voteScore-=1);
-                    console.log('did downvote increase', newVals)
-                    return newVals;
+                    return {...comment, voteScore: comment.voteScore - 1};
                 }else{
                     return comment;
                 }
@@ -99,8 +78,6 @@ export default function (state=initialState,action) {
                 ...state,
                 comments : [...state.comments.map(newerVDState)],
             };
-
-
         default:
             return state;
     }

@@ -47,17 +47,11 @@ export default function (state=initialState,action) {
                 posts: [...action.posts]
             };
         case EDIT_POST:
-            console.log('EDIT POST LOG message',state.posts.filter((post) => post.id !== action.posts.id));
+            const posts = state.posts.filter(post => post.id !== action.posts.id).concat(action.posts);
             return {
-                ...state,
-                posts: [
-                    ...state.posts.filter((post) => post.id !== action.posts.id),
-                    {...action.posts}
-                ]
+                posts
             };
         case GET_POST:
-            console.log(action.posts,'mokey power')
-
             return {
                 ...state,
                 posts: [...state.posts,  {
@@ -79,11 +73,8 @@ export default function (state=initialState,action) {
             };
         case INCREMENT_VOTE_SCORE:
             const newerVUState = (post) => {
-                let newVals = {};
                 if(post.id === action.posts.id) {
-                    newVals = Object.assign({},post,post.voteScore+=1);
-                    console.log('did upvote increase', newVals)
-                    return newVals;
+                    return {...post, voteScore: post.voteScore + 1};
                 }else{
                     return post;
                 }
@@ -95,11 +86,8 @@ export default function (state=initialState,action) {
 
         case DECREMENT_VOTE_SCORE:
             const newerVDState = (post) => {
-                let newVals = {};
                 if(post.id === action.posts.id) {
-                    newVals = Object.assign({},post,post.voteScore-=1);
-                    console.log('did downvote increase', newVals)
-                    return newVals;
+                    return  {...post, voteScore: post.voteScore - 1};
                 }else{
                     return post;
                 }
@@ -111,11 +99,8 @@ export default function (state=initialState,action) {
 
         case INCREASE_POSTS_COMMENT_COUNT:
             const newerState = (post) => {
-                let newVals = {};
                 if(post.id === action.posts.parentId) {
-                    newVals = Object.assign({},post,post.commentCount+=1);
-                    console.log('did comment increase', newVals)
-                    return newVals;
+                    return {...post, commentCount: post.commentCount + 1};
                 }else{
                     return post;
                 }
@@ -127,11 +112,8 @@ export default function (state=initialState,action) {
 
         case DECREASE_POSTS_COMMENT_COUNT:
             const newerDState = (post) => {
-                let newVals = {};
                 if(post.id === action.posts.parentId) {
-                    newVals = Object.assign({},post,post.commentCount-=1);
-                    console.log('did comment increase', newVals)
-                    return newVals;
+                    return {...post, commentCount: post.commentCount - 1};
                 }else{
                     return post;
                 }

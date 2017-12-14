@@ -97,9 +97,6 @@ class EditComment extends Component {
 }
 
 
-
-function mapStateToProps(comments) {
-    return comments;
-}
+const mapStateToProps = comments =>  comments ;
 
 export default connect(mapStateToProps)(EditComment);

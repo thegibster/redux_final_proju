@@ -1,16 +1,5 @@
-import React, { Component } from 'react';
-// import { Link  } from 'react-router-dom';
+import React from 'react';
 
-
-
-class NoMatch extends Component {
-    render () {
-
-        return (
-            <div>404 Not Found</div>
-        )
-    }
-}
-
+const NoMatch = () => <div>404 Not Found</div>;
 
 export default NoMatch;

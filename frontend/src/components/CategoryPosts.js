@@ -47,9 +47,7 @@ class CategoryPosts extends Component {
     }
 }
 
-function mapStateToProps(posts) {
-    return posts;
-}
+const mapStateToProps = posts =>  posts ;
 
 export default connect(mapStateToProps)(CategoryPosts);
 
