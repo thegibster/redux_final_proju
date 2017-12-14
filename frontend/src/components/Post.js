@@ -131,7 +131,7 @@ class Post extends Component {
     }
 
     render () {
-
+        const  pathname =  this.props.location.pathname;
         const actions = [
             <FlatButton
                 label="Cancel"
@@ -190,7 +190,7 @@ class Post extends Component {
                                             <div className="">
                                                 <div className="">
                                                 </div>
-                                                <div className="">Title: <Link to={`/${post.id}`}>{post.title}</Link></div>
+                                                <div className="">Title: <Link to={`${pathname}`}>{post.title}</Link></div>
                                                 <div>Date: {new Date(post.timestamp).toUTCString()}</div>
                                                 <div>{post.body}</div>
                                                 <div>By: {post.author}</div>

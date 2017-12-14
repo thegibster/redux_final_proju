@@ -30,7 +30,7 @@ class Posts extends Component {
                         <li>
                             <div className="">
 
-                                <div className="">Title: <Link to={`${pathname +"/"+ post.id}`}>{post.title}</Link></div>
+                                <div className="">Title: <Link to={`${post.category}/${post.id}`}>{post.title}</Link></div>
                                 <div>Content: {post.body}</div>
                                 <div>By: {post.author}</div>
                                 <div>Category: {post.category}</div>
@@ -53,7 +53,7 @@ class Posts extends Component {
                                         <div className="">
 
                                         </div>
-                                        <div className="">Title: <Link to={`${pathname +"/"+ post.id}`}>{post.title}</Link></div>
+                                        <div className="">Title: <Link to={`${post.category}/${post.id}`}>{post.title}</Link></div>
                                         <div>{post.body}</div>
                                         <div>By: {post.author}</div>
                                         <div>Category: {post.category}</div>

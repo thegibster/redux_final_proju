@@ -5,10 +5,13 @@ import CategoryPost from './CategoryPost';
 
 class CategoryView extends Component {
     render () {
-         console.log("category comp", this.props.categories.categories);
-         const  categories  = this.props.categories.categories.filter((category) => category.name === this.props.match.params.id );
-         const filteredPosts = this.props.posts.posts.filter((post) => post.category === this.props.match.params.id);
-         console.log("everythting in props", categories)
+         console.log("category comp", this.props.categories.categories,'cat id ', this.props.match.params);
+         const  categories  = this.props.categories.categories.filter((category) => category.name === this.props.match.params.category );
+         // const filteredPosts = this.props.posts.posts.filter((post) => post.category === this.props.match.params.id);
+        const filteredPosts = this.props.posts.posts.filter((post) => post.category === this.props.match.params.category);
+
+        console.log("CategoryView ", categories)
+
 
 
         return (
