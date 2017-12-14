@@ -13,75 +13,59 @@ class AllPosts extends Component {
         console.log('state changed srt to',e.target.value)
         this.setState({sortBy: e.target.value});
     }
+    curriedFilter = (filterToUse,posts,pathname) => {
+    if(filterToUse !=='') {
+        console.log(filterToUse !=='')
+        let filter = filterToUse.toString();
+        console.log(filterToUse,'thie filter seecltin wors',posts.sort((a, b) => a[filter] - b[filter]))
+        return (posts.sort((a, b) => a.filterToUse - b.filterToUse).map((post) => (
+            <div key={post.id}>
+                <li>
+                    <div className="">
+                        <div className="">Title: <Link to={`${post.category}${pathname + post.id}`}>{post.title}</Link></div>
+                        <div>Content: {post.body}</div>
+                        <div>By: {post.author}</div>
+                        <div>Category: {post.category}</div>
+                        <div>Vote Score: {post.voteScore}</div>
+                        <div>Comments: {post.commentCount}</div>
+                        <Link to={`posts${pathname + post.id}/edit`}>Edit Post</Link>
+                        <div className="">
+                        </div>
+                    </div>
+                </li>
+            </div>
+        )))
+    } else {
+        return (
+            posts.map((post) => (
+                    <div key={post.id}>
+                        <li>
+                            <div className="">
+                                <div className="">
+                                </div>
+                                <div className="">Title: <Link to={`${post.category}${pathname + post.id}`}>{post.title}</Link></div>
+                                <div>{post.body}</div>
+                                <div>By: {post.author}</div>
+                                <div>Category: {post.category}</div>
+                                <div>Vote Score: {post.voteScore}</div>
+                                <div>Comments: {post.commentCount}</div>
+                                <div>Date: {new Date(post.timestamp).toUTCString()}</div>
+                                <Link to={`posts${pathname + post.id}/edit`}>Edit</Link>
+                                <div className="">
+                                </div>
+                            </div>
+                        </li>
+                    </div>
+                )
+            )
+        )
+    }
+};
 
     render () {
         const options = [{name:'voteScore'},{name:'timestamp'}];
         const { posts } = this.props.posts;
         const  pathname =  this.props.location.pathname;
-
-        const curriedFilter = (filterToUse) => {
-            if(filterToUse !=='') {
-                console.log(filterToUse !=='')
-                let filter = filterToUse.toString();
-                console.log(filterToUse,'thie filter seecltin wors',posts.sort((a, b) => a[filter] - b[filter]))
-                return (posts.sort((a, b) => a.filterToUse - b.filterToUse).map((post) => (
-                    <div key={post.id}>
-                        <li>
-                            <div className="">
-
-                                <div className="">Title: <Link to={`${post.category}${pathname + post.id}`}>{post.title}</Link></div>
-                                <div>Content: {post.body}</div>
-                                <div>By: {post.author}</div>
-                                <div>Category: {post.category}</div>
-                                <div>Vote Score: {post.voteScore}</div>
-                                <div>Comments: {post.commentCount}</div>
-                                <Link to={`${pathname+"/"+post.id}/edit`}>Edit Post</Link>
-                                <div className="">
-                                    {/*<Link to={`/${category.path}`}>{category.path}</Link>*/}
-                                </div>
-                            </div>
-                        </li>
-                    </div>
-                )))
-            } else {
-                return (
-                    posts.map((post) => (
-                            <div key={post.id}>
-                                <li>
-                                    <div className="">
-                                        <div className="">
-
-                                        </div>
-                                        <div className="">Title: <Link to={`${post.category}${pathname + post.id}`}>{post.title}</Link></div>
-                                        <div>{post.body}</div>
-                                        <div>By: {post.author}</div>
-                                        <div>Category: {post.category}</div>
-                                        <div>Vote Score: {post.voteScore}</div>
-                                        <div>Comments: {post.commentCount}</div>
-                                        <div>Date: {new Date(post.timestamp).toUTCString()}</div>
-                                        <Link to={`posts${pathname + post.id}/edit`}>Edit</Link>
-                                        <div className="">
-                                            {/*<Link to={`/${category.path}`}>{category.path}</Link>*/}
-                                        </div>
-                                    </div>
-                                </li>
-                            </div>
-                        )
-                    ))
-            }
-        };
-
-        const renderContent = (theFilter) => {
-
-            switch(theFilter){
-                case 'voteScore':
-                    return curriedFilter('voteScore');
-                case 'timestamp':
-                    return curriedFilter('timestamp');
-                default:
-                    return curriedFilter('')
-            }
-        };
 
         return (
             <div className="posts">
@@ -99,7 +83,7 @@ class AllPosts extends Component {
                 </div>
                 <ol className="categories-grid">
                     { (posts.length > 0) ?
-                        renderContent(this.state.sortBy)
+                        this.curriedFilter(this.state.sortBy,posts,pathname)
                         : <div>No Posts for this Category.</div>
                     }
 
