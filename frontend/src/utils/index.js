@@ -1,11 +1,11 @@
 //Returns all the categories from the server
 // only 3 categories exists  for this project but for scaling, this is probably cleaner in the long run
-const base = 'http://localhost:3001';
+import machine_backend_ip from './ip_address_util';
 
 export const fetchCategories = () => {
 
 
-    return fetch(`${base}/categories`,{
+    return fetch(`${machine_backend_ip}/categories`,{
         method: 'get',
         headers: {
             'Authorization': 'cake'
@@ -18,7 +18,7 @@ export const fetchCategories = () => {
 export const fetchPosts = () => {
 
 
-    return fetch(`${base}/posts`,{
+    return fetch(`${machine_backend_ip}/posts`,{
         method: 'get',
         headers: {
             'Authorization': 'cake'
@@ -31,7 +31,7 @@ export const fetchPosts = () => {
 export const fetchComments = () => {
 
 
-    return fetch(`${base}/comments`,{
+    return fetch(`${machine_backend_ip}/comments`,{
         method: 'get',
         headers: {
             'Authorization': 'cake'

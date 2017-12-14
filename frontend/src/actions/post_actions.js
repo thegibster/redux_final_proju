@@ -118,7 +118,7 @@ export const postNewPost = new_post => {
     console.log(new_post, 'postnew port from aciton file');
 
         return PostsAPIUtil
-            .post_a_post(new_post)
+            .create_post(new_post)
             // .then(() => fetchPosts())
             .then((posts) => (posts))
 

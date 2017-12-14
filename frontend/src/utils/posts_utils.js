@@ -1,9 +1,10 @@
+import machine_backend_ip from './ip_address_util';
 const uuidV1 = require('uuid/v1');
 
 export const fetch_posts = () => {
 
 
-    return fetch(`http://localhost:3001/posts/`,{
+    return fetch(`${machine_backend_ip}/posts/`,{
         method: 'get',
         headers: {
             'Authorization': 'cake'
@@ -16,7 +17,7 @@ export const fetch_posts = () => {
 export const fetch_posts_byID = (post_id) => {
 
 
-    return fetch(`http://localhost:3001/posts/${post_id}/`,{
+    return fetch(`${machine_backend_ip}/posts/${post_id}/`,{
         method: 'get',
         headers: {
             'Authorization': 'cake'
@@ -26,7 +27,7 @@ export const fetch_posts_byID = (post_id) => {
     // .then(({ hits }) => hits.map(({ recipe }) => recipe))
 }
 
-export const post_a_post = (new_post) => {
+export const create_post = (new_post) => {
     console.log(new_post)
     const parameters = {
         id:uuidV1(),
@@ -41,7 +42,7 @@ export const post_a_post = (new_post) => {
     // let data = new FormData();
     // data.append( "json", JSON.stringify( parameters ) );
 
-    return fetch(`http://localhost:3001/posts`,{
+    return fetch(`${machine_backend_ip}/posts`,{
         method: 'post',
         headers: {
             'Authorization': 'cake',
@@ -60,7 +61,7 @@ export const post_a_post = (new_post) => {
 export const fetch_comments_by_id = (id) => {
 
 
-    return fetch(`http://localhost:3001/comments/${id}`,{
+    return fetch(`${machine_backend_ip}/comments/${id}`,{
         method: 'get',
         headers: {
             'Authorization': 'cake'
@@ -77,7 +78,7 @@ export const postVote_by_id = (id,voteScore) => {
 
 
 
-    return fetch(`http://localhost:3001/posts/${id}`, {
+    return fetch(`${machine_backend_ip}/posts/${id}`, {
         method: 'post',
         headers: {
             'Authorization': 'cake',
@@ -94,7 +95,7 @@ export const postVote_by_id = (id,voteScore) => {
 export const edit_post_by_id = (id,edit_post) => {
     edit_post.timestamp = Date.now();
 
-    return fetch(`http://localhost:3001/posts/${id}`,{
+    return fetch(`${machine_backend_ip}/posts/${id}`,{
         method: 'put',
         headers: {
             'Authorization': 'cake',
@@ -112,7 +113,7 @@ export const delete_all_posts_comments_by_id = (id) => {
     //not a true delete
     //turns the deleted flag on, thus excluding the comment from the filter view
 
-    return fetch(`http://localhost:3001/posts/${id}`,{
+    return fetch(`${machine_backend_ip}/posts/${id}`,{
         method: 'delete',
         headers: {
             'Authorization': 'cake'

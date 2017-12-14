@@ -70,40 +70,32 @@ class EditPost extends Component {
 
         console.log("edit-post hallue" ,this.props)
         const postID = this.props;
-        const singlePost = this.props.posts.posts.filter(post => post.id === postID.match.params.id);
+        const singlePost = this.props.posts.posts.find(post => post.id === postID.match.params.id);
 
-        console.log(singlePost[0],singlePost)
-        // const getEditPost = (item) => item.id === postID.match.params.id;
-        // console.log(singlePost.find(getEditPost));
         return (
             <Container>
                 <h1>Edit Post</h1>
 
-
-
-                { (singlePost !== null && Object.keys(singlePost).length !== 0 ) ?
-
-                    singlePost.map((post) => (
-                        post.id ?
-                            <div key={post.id}>
-                                <Form onSubmit={this.handleSubmit}>
-                                    <Input name="title" hint="Title" value={this.state.title || post.title} onChange={this.handleTitleChange}/>
-                                    <Input name= "author" hint="Author" value={this.state.author || post.author} onChange={this.handleAuthorChange}/>
-                                    <Select name="category" label="Choose A Category" required  value={this.state.category || post.category} onChange={this.handleCategoryChange}>
-                                        <Option value='' label="None">None</Option>
-                                        {
-                                            options.map((category) =>(
-                                                    <Option key={category.name} value={category.name} label={category.name.toUpperCase()} />
-                                                )
+                { (singlePost !== undefined) ?
+                    singlePost.id ?
+                        <div key={singlePost.id}>
+                            <Form onSubmit={this.handleSubmit}>
+                                <Input name="title" hint="Title" value={this.state.title || singlePost.title} onChange={this.handleTitleChange}/>
+                                <Input name= "author" hint="Author" value={this.state.author || singlePost.author} onChange={this.handleAuthorChange}/>
+                                <Select name="category" label="Choose A Category" required  value={this.state.category || singlePost.category} onChange={this.handleCategoryChange}>
+                                    <Option value='' label="None">None</Option>
+                                    {
+                                        options.map((category) =>(
+                                                <Option key={category.name} value={category.name} label={category.name.toUpperCase()} />
                                             )
-                                        }
-                                    </Select>
-                                    <Textarea name="body" hint="Body" value={this.state.body || post.body} onChange={this.handleBodyChange}/>
-                                    <Button variant="raised" type="submit" value="Submit">Submit</Button>
-                                </Form>
-                            </div>
-                            : <div>No bueno</div>
-                    ))
+                                        )
+                                    }
+                                </Select>
+                                <Textarea name="body" hint="Body" value={this.state.body || singlePost.body} onChange={this.handleBodyChange}/>
+                                <Button variant="raised" type="submit" value="Submit">Submit</Button>
+                            </Form>
+                        </div>
+                        : <div>No bueno</div>
 
                     : <div><Loader/></div>
                 }
@@ -113,8 +105,9 @@ class EditPost extends Component {
     }
 }
 
-const mapStateToProps = categories =>  categories ;
-
+function mapStateToProps(categories) {
+    return categories;
+}
 
 export default connect(mapStateToProps)(EditPost);
 
