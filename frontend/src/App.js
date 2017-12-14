@@ -64,9 +64,7 @@ class App extends Component {
                     <Route  path='/posts' exact component={Posts}/>
                     <Route  path="/posts/new" exact component={New_Post} />
                     <Route  path='/:category/:posts([a-z]{5})' exact component={CategoryView}/>
-
                     <Route  path="/:category/:id"  exact component={Post} />
-
                     <Route  path="/posts/:id/edit"  exact component={EditPost} />
                     <Route  path="/comments/:id/edit"  exact component={EditComment} />
                     <Route component={NoMatch}/>
