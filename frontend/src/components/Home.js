@@ -7,7 +7,6 @@ class Home extends Component {
         return (
             <div >
                 <h3>Home</h3>
-                {/*<Posts posts={this.props}/>*/}
                 <AllPosts location={this.props.location}/>
             </div>
         )
@@ -17,5 +16,3 @@ class Home extends Component {
 const mapStateToProps = categories =>  categories;
 
 export default connect(mapStateToProps)(Home);
-
-// export default Home;

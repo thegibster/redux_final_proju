@@ -20,23 +20,23 @@ class EditPost extends Component {
         category:'',
         title:''
 
-    }
+    };
 
     handleAuthorChange = (e) => {
         this.setState({author: e.target.value});
-    }
+    };
     handleBodyChange = (e) => {
         this.setState({body: e.target.value});
-    }
+    };
     handleCategoryChange = (e) => {
         this.setState({category: e.target.value});
-    }
+    };
     handleTitleChange = (e) => {
         this.setState({title: e.target.value});
-    }
+    };
     editDone() {
         this.props.history.push('/posts');
-    }
+    };
     handleSubmit = (e) => {
         e.preventDefault();
         const {dispatch} = this.props;
@@ -60,18 +60,13 @@ class EditPost extends Component {
                 });
                 this.editDone();
             });
-
-        console.log('submit edit',finalObEdit);
-    }
+    };
 
 
     render () {
         const options = this.props.categories.categories;
-
-        console.log("edit-post hallue" ,this.props)
         const postID = this.props;
         const singlePost = this.props.posts.posts.find(post => post.id === postID.match.params.id);
-
         return (
             <Container>
                 <h1>Edit Post</h1>
@@ -110,5 +105,3 @@ function mapStateToProps(categories) {
 }
 
 export default connect(mapStateToProps)(EditPost);
-
-// export default EditPost;

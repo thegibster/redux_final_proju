@@ -36,7 +36,6 @@ class Posts extends Component {
         this.setState({openConfirm: false});
     };
     handleSortByChange = (e) => {
-        console.log('state changed srt to',e.target.value)
         this.setState({sortBy: e.target.value});
     }
     handleDownVote = (post_id, e) => {
@@ -54,7 +53,6 @@ class Posts extends Component {
         const voteType = "upVote";
         postVote_by_id(post_id, voteType)
             .then((valueReturned) => {
-                console.log((valueReturned))
                 dispatch(postUpscore(valueReturned));
             });
     };
