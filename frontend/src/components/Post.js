@@ -12,7 +12,7 @@ import Form from 'muicss/lib/react/form';
 import Input from 'muicss/lib/react/input';
 import Textarea from 'muicss/lib/react/textarea';
 import {post_a_comment} from '../utils/comments_utils';
-import {postVote_by_id,delete_all_posts_comments_by_id} from '../utils/posts_utils'
+import {postVote_by_id,delete_all_posts_comments_by_id} from '../utils/posts_utils';
 import * as CommentActions  from '../actions/comments_actions';
 import {increasePostCommentCount,postUpscore,postDownscore,deletePost} from '../actions/post_actions';
 
