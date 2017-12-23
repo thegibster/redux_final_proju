@@ -15,10 +15,8 @@ class AllPosts extends Component {
     }
     curriedFilter = (filterToUse,posts,pathname) => {
     if(filterToUse !=='') {
-        console.log(filterToUse !=='')
         let filter = filterToUse.toString();
-        console.log(filterToUse,'thie filter seecltin wors',posts.sort((a, b) => a[filter] - b[filter]))
-        return (posts.sort((a, b) => a.filterToUse - b.filterToUse).map((post) => (
+        return (posts.sort((a, b) => a[filter] - b[filter]).map((post) => (
             <div key={post.id}>
                 <li>
                     <div className="">
