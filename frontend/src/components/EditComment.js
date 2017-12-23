@@ -9,8 +9,6 @@ import Container from 'muicss/lib/react/container';
 import {edit_comment_by_id} from '../utils/comments_utils';
 import {fetchCommentByID,editedCommenttLoad} from '../actions/comments_actions';
 
-
-
 class EditComment extends Component {
 
     componentDidMount(){
@@ -43,10 +41,8 @@ class EditComment extends Component {
                 finalObEdit[key] = this.state[key];
             }
         });
-        console.log(this.props.match.params.id)
         edit_comment_by_id(this.props.match.params.id,finalObEdit)
             .then( (valueReturned) => {
-                console.log((valueReturned))
                 dispatch(editedCommenttLoad(valueReturned));
                 this.setState({
                     body:'',
@@ -55,25 +51,14 @@ class EditComment extends Component {
                 this.editDone();
             });
 
-        console.log('submit edit',finalObEdit);
     }
 
-
-
     render () {
-        // const postID = this.props;
-        // const singleComment = this.props.comments.comments.filter(comment => comment.id === postID.match.params.id);
         const singleComment = this.getThisComment();
-        console.log("single comment const",singleComment,this.props)
-
         return (
             <Container>
                 <h1>Edit Comment</h1>
-
-
-
                 { (singleComment !== null && Object.keys(singleComment).length !== 0 ) ?
-
                     singleComment.map((comment) => (
                         comment.id ?
                             <div key={comment.id}>
@@ -85,13 +70,12 @@ class EditComment extends Component {
                                 </Form>
                             </div>
                             : <div>No bueno</div>
-                    ))
+                    )
+                    )
 
                     : <div><Loader/></div>
                 }
-
             </Container>
-
         )
     }
 }

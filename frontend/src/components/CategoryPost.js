@@ -18,18 +18,8 @@ class CategoryPost extends Component {
                             <div key={post.id}>
                                 <li>
                                     <div className="">
-                                        <div className="">
-                                            {/*<div className="book-cover" style={{ width: 128, height: 188, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>*/}
-                                            {/*<div className="book-shelf-changer">*/}
-                                            {/*<Select*/}
-                                            {/*name={book.id}*/}
-                                            {/*onChange={handleInputChange}*/}
-                                            {/*value={`${book.shelf}`}*/}
-                                            {/*/>*/}
-                                            {/*</div>*/}
-                                        </div>
-                                        {/*<div className="">Title: <Link to={`${pathname+post.id}`}>{post.title}</Link></div>*/}
-                                        <div>{post.body}</div>
+                                        <div className="">Title: <Link to={`${post.id}`}>{post.title}</Link></div>
+                                        <div>Content: {post.body}</div>
                                         <div>By: {post.author}</div>
                                         <div>Category: {post.category}</div>
                                         <div>Vote Score: {post.voteScore}</div>

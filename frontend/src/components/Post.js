@@ -23,10 +23,7 @@ const uuidV1 = require('uuid/v1');
 class Post extends Component {
 
     componentDidMount(){
-
         this.props.dispatch(CommentActions.fetchCommentsByParentID({id:this.props.match.params.id})());
-        console.log(this.props,"urika from Post");
-
     }
 
     state = {
@@ -192,9 +189,10 @@ class Post extends Component {
                                                 </div>
                                                 <div className="">Title: <Link to={`${pathname}`}>{post.title}</Link></div>
                                                 <div>Date: {new Date(post.timestamp).toUTCString()}</div>
-                                                <div>{post.body}</div>
+                                                <div>Content: {post.body}</div>
                                                 <div>By: {post.author}</div>
                                                 <div>Category: {post.category}</div>
+                                                <Link to={`${pathname}/edit`}>Edit</Link>
                                                 <div>Vote Score: {post.voteScore}
                                                     <Button onClick={this.handleUpVote}>+</Button>
                                                     <Button onClick={this.handleDownVote}>-</Button>
