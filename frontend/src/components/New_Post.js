@@ -9,7 +9,7 @@ import Button from 'muicss/lib/react/button';
 import Container from 'muicss/lib/react/container';
 import {postNewPost} from   '../actions/post_actions';
 import {postLoad} from '../actions/post_actions';
-
+import PropTypes from 'prop-types';
 
 class New_Post extends Component {
     state = {
@@ -80,6 +80,15 @@ class New_Post extends Component {
         )
     }
 }
+
+New_Post.propTypes = {
+    location: PropTypes.object,
+    dispatch: PropTypes.func,
+    categories: PropTypes.objectOf(PropTypes.array),
+    comments: PropTypes.objectOf(PropTypes.array),
+    posts: PropTypes.objectOf(PropTypes.array)
+};
+
 const mapStateToProps = posts => posts;
 
 export default connect(mapStateToProps)(New_Post);

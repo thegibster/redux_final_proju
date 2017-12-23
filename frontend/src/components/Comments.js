@@ -5,6 +5,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {Card, CardActions, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 import Toggle from 'material-ui/Toggle';
+import PropTypes from 'prop-types';
 
 class Comments extends Component {
     state = {
@@ -79,6 +80,14 @@ class Comments extends Component {
         )
     }
 }
+
+Comments.propTypes = {
+    location: PropTypes.object,
+    dispatch: PropTypes.func,
+    categories: PropTypes.objectOf(PropTypes.array),
+    comments: PropTypes.objectOf(PropTypes.array),
+    posts: PropTypes.objectOf(PropTypes.array)
+};
 
 const mapStateToProps = comments => comments;
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {  Link  } from 'react-router-dom';
-// import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 class CategoryPost extends Component {
     render () {
@@ -24,7 +24,6 @@ class CategoryPost extends Component {
                                         <div>Category: {post.category}</div>
                                         <div>Vote Score: {post.voteScore}</div>
                                         <div>Comments: {post.commentCount}</div>
-                                        {/*<Link to={`${pathname+post.id}/edit`}>Edit</Link>*/}
                                         <div className="">
                                             <Link to={`/posts/${post.id}`}>View/Edit This Post</Link>
                                         </div>
@@ -41,11 +40,13 @@ class CategoryPost extends Component {
         )
     }
 }
-//
-// function mapStateToProps(categories) {
-//     return categories;
-// }
-//
-// export default connect(mapStateToProps)(CategoryPost);
+
+CategoryPost.propTypes = {
+    location: PropTypes.object,
+    dispatch: PropTypes.func,
+    categories: PropTypes.objectOf(PropTypes.array),
+    comments: PropTypes.objectOf(PropTypes.array),
+    posts: PropTypes.objectOf(PropTypes.array)
+};
 
 export default CategoryPost;

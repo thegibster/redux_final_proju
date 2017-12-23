@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import Select from 'muicss/lib/react/select';
 import Option from 'muicss/lib/react/option';
+import PropTypes from 'prop-types';
 
 class AllPosts extends Component {
     state = {
@@ -92,6 +93,14 @@ class AllPosts extends Component {
         )
     }
 }
+
+AllPosts.propTypes = {
+    location: PropTypes.object,
+    dispatch: PropTypes.func,
+    categories: PropTypes.objectOf(PropTypes.array),
+    comments: PropTypes.objectOf(PropTypes.array),
+    posts: PropTypes.objectOf(PropTypes.array)
+};
 
 const mapStateToProps = posts => posts;
 

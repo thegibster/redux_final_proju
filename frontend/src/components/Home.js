@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AllPosts from './AllPosts'
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 class Home extends Component {
     render () {
@@ -12,6 +13,14 @@ class Home extends Component {
         )
     }
 }
+
+Home.propTypes = {
+    location: PropTypes.object,
+    dispatch: PropTypes.func,
+    categories: PropTypes.objectOf(PropTypes.array),
+    comments: PropTypes.objectOf(PropTypes.array),
+    posts: PropTypes.objectOf(PropTypes.array)
+};
 
 const mapStateToProps = categories =>  categories;
 

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import CategoryPost from './CategoryPost';
+import PropTypes from 'prop-types';
 
 class CategoryView extends Component {
     render() {

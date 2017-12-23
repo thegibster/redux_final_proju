@@ -15,6 +15,7 @@ import {post_a_comment} from '../utils/comments_utils';
 import {postVote_by_id, delete_all_posts_comments_by_id} from '../utils/posts_utils';
 import * as CommentActions  from '../actions/comments_actions';
 import {increasePostCommentCount, postUpscore, postDownscore, deletePost} from '../actions/post_actions';
+import PropTypes from 'prop-types';
 
 const uuidV1 = require('uuid/v1');
 
@@ -224,6 +225,14 @@ class Post extends Component {
         )
     }
 }
+
+Post.propTypes = {
+    location: PropTypes.object,
+    dispatch: PropTypes.func,
+    categories: PropTypes.objectOf(PropTypes.array),
+    comments: PropTypes.objectOf(PropTypes.array),
+    posts: PropTypes.objectOf(PropTypes.array)
+};
 
 const mapStateToProps = posts => posts;
 

@@ -10,6 +10,7 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import {postVote_by_id, delete_all_posts_comments_by_id} from '../utils/posts_utils';
 import {postUpscore, postDownscore, deletePost} from '../actions/post_actions';
+import PropTypes from 'prop-types';
 
 class Posts extends Component {
     state = {
@@ -37,6 +38,7 @@ class Posts extends Component {
     };
     handleSortByChange = (e) => {
         this.setState({sortBy: e.target.value});
+        console.log(this.props, 'eheehe')
     }
     handleDownVote = (post_id, e) => {
         e.preventDefault();
@@ -193,6 +195,15 @@ class Posts extends Component {
         )
     }
 }
+
+
+Posts.propTypes = {
+    location: PropTypes.object,
+    dispatch: PropTypes.func,
+    categories: PropTypes.objectOf(PropTypes.array),
+    comments: PropTypes.objectOf(PropTypes.array),
+    posts: PropTypes.objectOf(PropTypes.array)
+};
 
 const mapStateToProps = posts => posts;
 

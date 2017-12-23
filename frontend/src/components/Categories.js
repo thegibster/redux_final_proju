@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
 import { Link  } from 'react-router-dom';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 class Categories extends Component {
     render () {
-         console.log("category comp", this.props.categories.categories);
-         const { categories } = this.props.categories;
-         console.log("everythting in props", this.props)
-
+        const { categories } = this.props.categories;
 
         return (
             <div className="category">
-                {/*<h1>Category:</h1>*/}
+
                 <ol className="categories-grid">
                     { (categories.length > 0) ?
 
@@ -29,7 +27,7 @@ class Categories extends Component {
                             </div>
                         ))
 
-                    : <div>Nothing to See here</div>
+                        : <div>Nothing to See here</div>
                     }
 
                 </ol>
@@ -37,6 +35,15 @@ class Categories extends Component {
         )
     }
 }
+
+Categories.propTypes = {
+    location: PropTypes.object,
+    dispatch: PropTypes.func,
+    categories: PropTypes.objectOf(PropTypes.array),
+    comments: PropTypes.objectOf(PropTypes.array),
+    posts: PropTypes.objectOf(PropTypes.array)
+};
+
 
 const mapStateToProps = categories =>  categories ;
 

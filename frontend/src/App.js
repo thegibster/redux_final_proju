@@ -13,6 +13,7 @@ import Home from './components/Home';
 import './App.css';
 import { fetchPosts }  from './actions/post_actions';
 import { fetchCategories }  from './actions/categories_action';
+import PropTypes from 'prop-types';
 
 class App extends Component {
 
@@ -74,6 +75,15 @@ class App extends Component {
         );
     }
 }
+
+
+App.propTypes = {
+    location: PropTypes.object,
+    dispatch: PropTypes.func,
+    categories: PropTypes.objectOf(PropTypes.array),
+    comments: PropTypes.objectOf(PropTypes.array),
+    posts: PropTypes.objectOf(PropTypes.array)
+};
 
 function mapStateToProps(state) {
     return state;

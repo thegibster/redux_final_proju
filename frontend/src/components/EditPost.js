@@ -10,6 +10,7 @@ import Container from 'muicss/lib/react/container';
 import Loader from 'react-loader';
 import {edit_post_by_id} from '../utils/posts_utils';
 import {editedPostLoad} from '../actions/post_actions';
+import PropTypes from 'prop-types';
 
 class EditPost extends Component {
 

@@ -8,6 +8,8 @@ import Loader from 'react-loader';
 import Container from 'muicss/lib/react/container';
 import {edit_comment_by_id} from '../utils/comments_utils';
 import {fetchCommentByID, editedCommenttLoad} from '../actions/comments_actions';
+import PropTypes from 'prop-types';
+
 
 class EditComment extends Component {
 
@@ -83,6 +85,13 @@ class EditComment extends Component {
     }
 }
 
+EditComment.propTypes = {
+    location: PropTypes.object,
+    dispatch: PropTypes.func,
+    categories: PropTypes.objectOf(PropTypes.array),
+    comments: PropTypes.objectOf(PropTypes.array),
+    posts: PropTypes.objectOf(PropTypes.array)
+};
 
 const mapStateToProps = comments => comments;
 

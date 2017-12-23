@@ -10,6 +10,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import {post_vote_comments_by_id,delete_comment_by_id} from '../utils/comments_utils';
 import {commentVoteUp,commentVoteDown,deleteTheComment} from '../actions/comments_actions';
 import {decreasePostCommentCount} from '../actions/post_actions';
+import PropTypes from 'prop-types';
 
 class Comment extends Component {
 
@@ -130,6 +131,14 @@ class Comment extends Component {
         )
     }
 }
+
+Comment.propTypes = {
+    location: PropTypes.object,
+    dispatch: PropTypes.func,
+    categories: PropTypes.objectOf(PropTypes.array),
+    comments: PropTypes.objectOf(PropTypes.array),
+    posts: PropTypes.objectOf(PropTypes.array)
+};
 
 
 const mapStateToProps = comments =>  comments ;
