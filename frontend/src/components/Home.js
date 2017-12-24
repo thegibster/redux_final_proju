@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import AllPosts from './AllPosts'
+import AllPosts from './AllPosts';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 

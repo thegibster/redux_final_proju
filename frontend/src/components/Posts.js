@@ -38,8 +38,7 @@ class Posts extends Component {
     };
     handleSortByChange = (e) => {
         this.setState({sortBy: e.target.value});
-        console.log(this.props, 'eheehe')
-    }
+    };
     handleDownVote = (post_id, e) => {
         e.preventDefault();
         const {dispatch} = this.props;
