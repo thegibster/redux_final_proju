@@ -46,7 +46,7 @@ CategoryPost.propTypes = {
     dispatch: PropTypes.func,
     categories: PropTypes.objectOf(PropTypes.array),
     comments: PropTypes.objectOf(PropTypes.array),
-    posts: PropTypes.objectOf(PropTypes.array)
+    posts: PropTypes.array
 };
 
 export default CategoryPost;

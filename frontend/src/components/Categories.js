@@ -20,7 +20,7 @@ class Categories extends Component {
                                         <div className="">
                                         </div>
                                         <div className="">
-                                            <Link to={`/category/${category.path}`}>{category.path}</Link>
+                                            <Link to={`/${category.path}/`}>{category.path}</Link>
                                         </div>
                                     </div>
                                 </li>

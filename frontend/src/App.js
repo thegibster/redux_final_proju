@@ -44,7 +44,7 @@ class App extends Component {
                                     <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                         <Link className="dropdown-item" to="/categories">All Categories</Link>
                                         {
-                                            this.props.categories.categories.map((item) => <Link key={item.name} className="dropdown-item" to={`/${item.name}/posts`}>{item.name}</Link>)
+                                            this.props.categories.categories.map((item) => <Link key={item.name} className="dropdown-item" to={`/${item.name}/`}>{item.name}</Link>)
                                         }
 
                                     </div>
@@ -63,9 +63,9 @@ class App extends Component {
                     <Route  path='/categories' exact component={Categories}/>
                     <Route  path='/posts' exact component={Posts}/>
                     <Route  path="/posts/new" exact component={New_Post} />
-                    <Route  path='/:category/:posts([a-z]{5})' exact component={CategoryView}/>
+                    <Route  path='/:category([a-z]{5})' exact component={CategoryView}/>
                     <Route  path="/:category/:id"  exact component={Post} />
-                    <Route  path="/:category/:id/edit"  exact component={EditPost} />
+                    <Route  path="/:category([a-z]{5})/:id/edit"  exact component={EditPost} />
                     <Route  path="/posts/:id/edit"  exact component={EditPost} />
                     <Route  path="/comments/:id/edit"  exact component={EditComment} />
                     <Route component={NoMatch}/>
